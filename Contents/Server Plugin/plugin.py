@@ -19,111 +19,105 @@ kWorkerSleep = 1
 kMaxNodeId = 255
 kMaxChildId = 255
 
-kGatewayId = 0
-kBoardNodeId = 255
-kBoardChildId = 255
+kNoneNodeId = -1
+kNoneChildId = -1
+kNoneType = -1
+
+kGatewayNodeId = 0
+kGatewayChildId = 0
 
 #MESSAGE message types (M_)
 kMessageTypes = {
-    "PRESENTATION": 0,
-    "SET_VARIABLE"	: 1,
-    "REQ_VARIABLE"	        : 2,
-    "ACK_VARIABLE"	        : 3,
-    "INTERNAL"		        : 4
+    "PRESENTATION"          : 0,
+    "SET"	                : 1,
+    "REQUEST"	            : 2,
+    "INTERNAL"	            : 3,
+    "STREAM"		        : 4
 }
 
 #PRESENTATION sensor types (S_)
 kSensorTypes = {
-    "DOOR" 			        : [0,  "Door"],
-    "MOTION" 		        : [1,  "Motion"],
-    "SMOKE" 		        : [2,  "Smoke"],
-    "LIGHT" 		        : [3,  "Relay"],
-    "DIMMER" 		        : [4,  "Dimmer"],
-    "COVER" 		        : [5,  "Window"],
-    "TEMP" 			        : [6,  "Temperature"],
-    "HUM" 			        : [7,  "Humidity"],
-    "BARO" 			        : [8,  "Barometer"],
-    "WIND" 			        : [9,  "Wind"],
-    "RAIN" 			        : [10, "Rain"],
-    "UV" 			        : [11, "UV"],
-    "WEIGHT" 		        : [12, "Weight"],
-    "POWER" 		        : [13, "Power"],
-    "HEATER" 		        : [14, "Heater"],
-    "DISTANCE" 		        : [15, "Distance"],
-    "LIGHT_LEVEL"	        : [16, "Lux"],
+    "DOOR" 			        : [0,  "Door Sensor"],
+    "MOTION" 		        : [1,  "Motion Sensor"],
+    "SMOKE" 		        : [2,  "Smoke Sensor"],
+    "LIGHT" 		        : [3,  "Relay Actuator"],
+    "DIMMER" 		        : [4,  "Dimmer Actuator"],
+    "COVER" 		        : [5,  "Window Sensor"],
+    "TEMP" 			        : [6,  "Temperature Sensor"],
+    "HUM" 			        : [7,  "Humidity Sensor"],
+    "BARO" 			        : [8,  "Barometer Sensor"],
+    "WIND" 			        : [9,  "Wind Sensor"],
+    "RAIN" 			        : [10, "Rain Sensor"],
+    "UV" 			        : [11, "UV Sensor"],
+    "WEIGHT" 		        : [12, "Weight Sensor"],
+    "POWER" 		        : [13, "Power Sensor"],
+    "HEATER" 		        : [14, "Heater Sensor"],
+    "DISTANCE" 		        : [15, "Distance Sensor"],
+    "LIGHT_LEVEL"	        : [16, "Luminance Sensor"],
     "ARDUINO_NODE"	        : [17, "Arduino Node"],
     "ARDUINO_RELAY"	        : [18, "Arduino Repeater"],
-    "LOCK" 			        : [19, "Lock"],
-    "IR" 			        : [20, "IR"],
-    "WATER" 		        : [21, "Water"]
+    "LOCK" 			        : [19, "Lock Sensor"],
+    "IR" 			        : [20, "IR Sensor"],
+    "WATER" 		        : [21, "Water Sensor"],
+	"AIR_QUALITY"           : [22, "AirQuality Sensor"]
 }
 
 #SET_VARIABLE, REQ_VARIABLE, ACK_VARIABLE sensor variables (V_)
 kVariableTypes = {
-    "TEMP"			        : [0,  "temperature",   "sensor update to"],
-    "HUM"			        : [1,  "humidity",      "sensor update to"],
-    "LIGHT"			        : [2,  "onOffState",    "update to"],
-    "DIMMER"		        : [3,  "dimmer",        "update to"],
-    "PRESSURE"		        : [4,  "barometer",     "update to"],
-    "FORECAST"		        : [5,  "barometer",     "update to"],
-    "RAIN"			        : [6,  "rain",          "update to"],
-    "RAINRATE"		        : [7,  "rain",          "update to"],
-    "WIND"			        : [8,  "wind",          "update to"],
-    "GUST"			        : [9,  "wind",          "update to"],
-    "DIRECTION"		        : [10, "direction",     "update to"],
-    "UV"			        : [11, "uv",            "update to"],
-    "WEIGHT"		        : [12, "scale",         "update to"],
-    "DISTANCE"		        : [13, "distance",      "update to"],
-    "IMPEDANCE"		        : [14, "scale",         "update to"],
-    "ARMED"			        : [15, "security",      "update to"],
-    "TRIPPED"		        : [16, "onoroff",       "update to"],
-    "WATT"			        : [17, "energy",        "update to"],
-    "KWH"			        : [18, "energy",        "update to"],
-    "SCENE_ON"		        : [19, "scene",         "update to"],
-    "SCENE_OFF"		        : [20, "scene",         "update to"],
-    "HEATER"		        : [21, "user",          "update to"],
-    "HEATER_SW"		        : [22, "onoroff",       "update to"],
-    "LIGHT_LEVEL"	        : [23, "light",         "update to"],
-    "VAR_1"			        : [24, "var",           "update to"],
-    "VAR_2"			        : [25, "var",           "update to"],
-    "VAR_3"			        : [26, "var",           "update to"],
-    "VAR_4"			        : [27, "var",           "update to"],
-    "VAR_5"			        : [28, "var",           "update to"],
-    "UP"			        : [29, "door",          "update to"],
-    "DOWN"			        : [30, "door",          "update to"],
-    "STOP"			        : [31, "door",          "update to"],
-    "IR_SEND"		        : [32, "ir",            "update to"],
-    "IR_RECEIVE"	        : [33, "ir",            "update to"],
-    "FLOW"			        : [34, "water",         "update to"],
-    "VOLUME"		        : [35, "water",         "update to"],
-    "LOCK_STATUS"	        : [36, "lock",          "update to"]
+    "TEMP"			        : [0,  "temperature",               "temperture update to"],
+    "HUM"			        : [1,  "humidity",                  "humidity update to"],
+    "LIGHT"			        : [2,  "onOffState",                "state update to"],
+    "DIMMER"		        : [3,  "dimmer",                    "dimmer update to"],
+    "PRESSURE"		        : [4,  "barometer",                 "pressure update to"],
+    "FORECAST"		        : [5,  "barometer",                 "forecast update to"],
+    "RAIN"			        : [6,  "rain",                      "rain update to"],
+    "RAINRATE"		        : [7,  "rain",                      "rainrate update to"],
+    "WIND"			        : [8,  "wind",                      "wind update to"],
+    "GUST"			        : [9,  "wind",                      "gust update to"],
+    "DIRECTION"		        : [10, "direction",                 "direction update to"],
+    "UV"			        : [11, "uv",                        "uv update to"],
+    "WEIGHT"		        : [12, "scale",                     "scale update to"],
+    "DISTANCE"		        : [13, "distance",                  "distance update to"],
+    "IMPEDANCE"		        : [14, "scale",                     "scale update to"],
+    "ARMED"			        : [15, "security",                  "security update to"],
+    "TRIPPED"		        : [16, "onoroff",                   "state update to"],
+    "WATT"			        : [17, "energy",                    "watt update to"],
+    "KWH"			        : [18, "energy",                    "kwh update to"],
+    "SCENE_ON"		        : [19, "scene",                     "scene on state update to"],
+    "SCENE_OFF"		        : [20, "scene",                     "scene off state update to"],
+    "HEATER"		        : [21, "user",                      "heater user update to"],
+    "HEATER_SW"		        : [22, "onoroff",                   "heater state update to"],
+    "LIGHT_LEVEL"	        : [23, "light",                     "luminance update to"],
+    "VAR_1"			        : [24, "var",                       "var 1 update to"],
+    "VAR_2"			        : [25, "var",                       "var 2 update to"],
+    "VAR_3"			        : [26, "var",                       "var 3 update to"],
+    "VAR_4"			        : [27, "var",                       "var 4 update to"],
+    "VAR_5"			        : [28, "var",                       "var 5 update to"],
+    "UP"			        : [29, "door",                      "up update to"],
+    "DOWN"			        : [30, "door",                      "down update to"],
+    "STOP"			        : [31, "door",                      "stop update to"],
+    "IR_SEND"		        : [32, "ir",                        "ir send update to"],
+    "IR_RECEIVE"	        : [33, "ir",                        "ir receive update to"],
+    "FLOW"			        : [34, "water",                     "water flow update to"],
+    "VOLUME"		        : [35, "water",                     "water volume update to"],
+    "LOCK_STATUS"	        : [36, "lock",                      "lock status update to"]
 }
 
 #INTERNAL internal messages (I_)
 kInternalTypes = {
-    "BATTERY_LEVEL"	        : [0,  "battery level"],
-    "BATTERY_DATE"	        : [1,  "last battery update"],
-    "LAST_TRIP"	            : [2,  "last trip"],
-    "TIME"			        : [3,  "time"],
-    "VERSION"		        : [4,  "Arduino library version"],
-    "REQUEST_ID"	        : [5,  "request id"],
-    "INCLUSION_MODE"        : [6,  "inclusion mode"],
-    "RELAY_NODE"	        : [7,  "repeater"],
-    "LAST_UPDATE"	        : [8,  "last update"],
-    "PING"			        : [9,  "ping"],
-    "PING_ACK"		        : [10, "ping ack"],
-    "LOG_MESSAGE"	        : [11, "log message"],
-    "CHILDREN"		        : [12, "children"],
-    "UNIT"			        : [13, "unit"],
-    "SKETCH_NAME"	        : [14, "sketch name"],
-    "SKETCH_VERSION"        : [15, "sketch version"]
-}
-
-#VALIDATION return values crc check of received message
-kValidationTypes = {
-    "VALIDATE_OK"	        : 0,
-    "VALIDATE_BAD_CRC"	    : 1,
-    "VALIDATE_BAD_VERSION"	: 2
+    "BATTERY_LEVEL"	        : [0,  "battery level ",            "update to "],
+    "TIME"			        : [1,  "time ",                     "update to "],
+    "VERSION"		        : [2,  "Arduino library version ",  "update to "],
+    "ID_REQUEST"            : [3,  "ID request ",               ""],
+ 	"ID_RESPONSE"           : [4,  "ID response ",              ""],
+ 	"INCLUSION_MODE"        : [5,  "inclusion mode ",           "update to "],
+  	"CONFIG"                : [6,  "config ",                   "update to "],
+    "PING"			        : [7,  "ping ",                     ""],
+    "PING_ACK"		        : [8,  "Ping ACK ",                 ""],
+    "LOG_MESSAGE"	        : [9,  "Log message ",              ""],
+    "CHILDREN"		        : [10, "Children ",                 "update to "],
+    "SKETCH_NAME"	        : [11, "Sketch name ",              "udate to "],
+    "SKETCH_VERSION"        : [12, "Sketch version ",           "update to "]
 }
 
 class Plugin(indigo.PluginBase):
@@ -141,6 +135,9 @@ class Plugin(indigo.PluginBase):
 
         self.devices                = indigo.Dict()
         self.nodeIds                = indigo.Dict()
+
+        self.gatewayAvailable       = False
+        self.gatewayVersion         = None
 
     def __del__(self):
         indigo.PluginBase.__del__(self)
@@ -161,8 +158,7 @@ class Plugin(indigo.PluginBase):
             self.sleep(kWorkerSleep)
 
         if not result:
-            indigo.server.log \
-                (u"Permanently failed connecting at address: %s (baudrate: %s)" % (self.address, kBaudrate))
+            self.errorLog(u"permanently failed connecting Gateway at address: %s" % self.address)
 
         self.loadDevices()
 
@@ -171,8 +167,6 @@ class Plugin(indigo.PluginBase):
 
         if self.connection:
             self.connection.close()
-
-        #self.pluginPrefs["devices"] = self.devices
 
     def deviceStartComm(self, indigoDevice):
         self.debugLog(u"Device started: \"%s\" %s" % (indigoDevice.name, indigoDevice.id))
@@ -194,7 +188,7 @@ class Plugin(indigo.PluginBase):
                 device["id"] = ""
 
                 self.devices[address] = device
-        except:
+        except Exception, (ErrorMessage):
             pass
 
     def didDeviceCommPropertyChange(self, oldIndigoDevice, indigoDevice):
@@ -206,7 +200,7 @@ class Plugin(indigo.PluginBase):
         try:
             self.readMessage()
         except reference.CommandError:
-            return
+            pass
 
     def runConcurrentThread(self):
         self.debugLog(u"Running thread")
@@ -261,39 +255,45 @@ class Plugin(indigo.PluginBase):
             nodeId = identifiers[0]
             childId = identifiers[1]
 
-            if childId == kBoardChildId and self.hasChildren(nodeId):
-                try:
-                    if not device["id"]:
+            type = device["type"]
+
+            try:
+                if nodeId != kGatewayNodeId and nodeId != kMaxNodeId:
+                    if (type == self.getSensorNumber("ARDUINO_RELAY") and not device["id"]) or (type == self.getSensorNumber("ARDUINO_NODE") and self.hasChildren(nodeId)):
                         deviceName = "%s" % nodeId
 
                         if device["model"]:
                             deviceName = "%s - %s" % (deviceName, device["model"])
+                        elif self.getSensorName(device["type"]):
+                            deviceName = "%s - %s" % (deviceName, self.getSensorName(device["type"]))
                         else:
-                            try:
-                                deviceName = "%s - %s" % (deviceName, self.getSensorName(device["type"]))
-                            except:
-                                pass
+                            deviceName = "%s - %s" % (deviceName, "unknown")
 
                         if device["modelVersion"]:
-                            deviceName = "%s (%s)" % (deviceName, device["modelVersion"])
+                            deviceName = "%s (SK%s)" % (deviceName, device["modelVersion"])
 
                         menuItems.append((nodeId, deviceName))
-                except:
-                    pass
+                    elif type == kNoneType:
+                        self.debugLog(u"device %s:%s not available: no type set" % (nodeId, childId))
+            except Exception, (ErrorMessage):
+                pass
 
         return menuItems
 
     def addIndigoDevice(self, valuesDict, deviceIdList):
-        self.debugLog(u"addIndigoDevice deviceIdList: %s" % deviceIdList)
-
-        nodeId = -1
-
         try:
-            nodeId = int(valuesDict["selecteddevice"])
+            nodeId = kNoneNodeId
 
-            if nodeId > -1:
+            try:
+                nodeId = int(valuesDict["selecteddevice"])
+
+                self.debugLog(u"add device %s" % nodeId)
+            except Exception, (ErrorMessage):
+                pass
+
+            if nodeId > kNoneNodeId:
                 self.addIndigoChildren(nodeId)
-        except:
+        except Exception, (ErrorMessage):
             pass
 
         return valuesDict
@@ -329,11 +329,6 @@ class Plugin(indigo.PluginBase):
             nodeId = identifiers[0]
             childId = identifiers[1]
 
-            #if pluginAction.deviceAction == indigo.kDimmerRelayAction.RequestStatus:
-            #    self.sendRequestVariableCommand(nodeId, childId, "LIGHT", "")
-            #
-            #    return
-            #el
             if pluginAction.deviceAction == indigo.kDimmerRelayAction.TurnOn:
                 onOffState = True
             elif pluginAction.deviceAction == indigo.kDimmerRelayAction.TurnOff:
@@ -348,9 +343,9 @@ class Plugin(indigo.PluginBase):
             else:
                 value = 0
 
-            self.sendSetVariableCommand(nodeId, childId, "LIGHT", value)
-        except:
-			indigo.server.log(u"action failed: %s" % "%s" % sys.exc_info()[0], isError = True)
+            self.sendSetCommand(nodeId, childId, "LIGHT", value)
+        except Exception, (ErrorMessage):
+			self.errorLog(u"dimmer action failed: %s" % ErrorMessage)
 
     ########################################
     # actions
@@ -382,286 +377,358 @@ class Plugin(indigo.PluginBase):
         arguments = None
 
         request = None
-        nodeId = kBoardNodeId
-        childId = -1
-        messageType = -1
-        itemType = -1
+        nodeId = kMaxNodeId
+        childId = kNoneChildId
+        messageType = kNoneType
+        itemType = kNoneType
         payload = ""
 
         try:
             request = self.connection.readline()
-        except:
-            error = "%s" % sys.exc_info()[0]
 
-            indigo.server.log(u"process incoming failed: %s" % error, isError = True)
-
-            if "serial" in error:
-                self.connection = None
-
-                return
-
-            request = None
-        finally:
             if request:
                 request = request.strip("\n\r")
 
-                self.debugLog("receiving raw command %s" % request)
+            if len(request) == 0:
+                return
 
-                if len(request) == 0:
-                    payload = "empty request"
-                elif request[0].isalpha() or request.find(";") == -1 or request.count(";") < 4:
-                    payload = request
-                else:
-                    try:
-                        arguments = request.split(";")
+            self.debugLog(u"receive raw %s" % request)
 
-                        nodeId = int(arguments[0])
-                        childId = int(arguments[1])
-                        messageType = int(arguments[2])
-                        itemType = int(arguments[3])
-                        payload = ";".join(arguments[4:])
-                    except:
-                        nodeId = kBoardNodeId
-                        childId = -1
-                        messageType = -1
-                        itemType = -1
-                        payload = request
+            if request[0].isalpha() or request.find(";") == kNoneType or request.count(";") < 4:
+                raise Exception("wrong request formatting: %s" % request)
 
-                if messageType == self.getMessageNumber("PRESENTATION"):
-                    self.processPresentationCommand(nodeId, childId, itemType, payload)
-                elif messageType == self.getMessageNumber("SET_VARIABLE"):
-                    self.processSetVariableCommand(nodeId, childId, itemType, payload)
-                elif messageType == self.getMessageNumber("REQ_VARIABLE"):
-                    self.processRequestVariableCommand(nodeId, childId, itemType, payload)
-                elif messageType == self.getMessageNumber("INTERNAL"):
-                    self.processInternalCommand(nodeId, childId, itemType, payload)
-                else:
-                    indigo.server.log(u"raw command failed: (%s)" % payload, isError = True)
+            arguments = request.split(";")
+
+            nodeId = int(arguments[0])
+            childId = int(arguments[1])
+            messageType = int(arguments[2])
+            itemType = int(arguments[3])
+            payload = ";".join(arguments[4:])
+
+            if payload.startswith("read:") or payload.startswith("send:"):
+                pass
+            elif messageType == self.getMessageNumber("PRESENTATION"):
+                self.processPresentationCommand(nodeId, childId, itemType, payload)
+            elif messageType == self.getMessageNumber("SET"):
+                self.processSetCommand(nodeId, childId, itemType, payload)
+            elif messageType == self.getMessageNumber("REQUEST"):
+                self.processRequestCommand(nodeId, childId, itemType, payload)
+            elif messageType == self.getMessageNumber("INTERNAL"):
+                self.processInternalCommand(nodeId, childId, itemType, payload)
+            elif messageType == self.getMessageNumber("STREAM"):
+                self.processStreamCommand(nodeId, childId, itemType, payload)
+            else:
+                raise Exception("Unrecognized messageType %s" % messageType)
+        except Exception, (ErrorMessage):
+            self.errorLog(u"process incoming failed: %s" % ErrorMessage)
+
+            if "serial" in ErrorMessage:
+                self.connection = None
 
     def processPresentationCommand(self, nodeId, childId, itemType, payload):
-        indigo.server.log(u"PRESENTATION %s (%s:%s) %s" % (self.getSensorName(itemType), nodeId, childId, payload))
-
         address = self.getAddress(nodeId = nodeId, childId = childId)
 
-        device = self.checkDevice(address = address)
+        device = self.getDevice(address = address)
 
-        model = self.getSensorName(itemType)
+        indigoDevice = None
+
+        name = self.getSensorName(itemType)
 
         try:
-            if device:
-                device = self.updateDevice(device, address, { "type" : itemType, "model" : model, "version" : payload })
-
-                if device["id"]:
-                    indigoDevice = indigo.devices[device["id"]]
-
-                    if indigoDevice:
-                        self.updateProperties(indigoDevice, { "type" : itemType, "model" : model, "version" : payload })
-        except:
-            pass
-
-    def processSetVariableCommand(self, nodeId, childId, itemType, payload):
-        try:
-            device = self.checkDevice(nodeId = nodeId, childId = childId)
             if device and device["id"]:
                 indigoDevice = indigo.devices[device["id"]]
 
-                if indigoDevice:
-                    value = self.updateState(indigoDevice, itemType, payload)
+            if device:
+                device = self.updateDevice(device, address, { "type" : itemType, "model" : name, "version" : payload })
 
-                    if value:
-                        indigo.server.log(u"received \"%s\" %s" % (indigoDevice.name, value))
-        except:
-            self.errorLog(u"processSetVariableCommand failed: %s" % sys.exc_info()[0])
-            pass
+            if indigoDevice:
+                self.updateProperties(indigoDevice, { "type" : itemType, "model" : name, "version" : payload })
 
-    def processRequestVariableCommand(self, nodeId, childId, itemType, payload):
-        indigo.server.log \
-            (u"received req variable %s (%s:%s) %s" % (self.getVariableText(itemType), nodeId, childId, payload))
+                indigo.server.log(u"received '%s' %s version update to %s" % (indigoDevice.name, name, payload))
+            else:
+                indigo.server.log(u"received '%s:%s' %s version update to %s" % (nodeId, childId, name, payload))
+        except Exception, (ErrorMessage):
+            if indigoDevice:
+                self.errorLog(u"received '%s' %s version update to %s failed: %s" % (indigoDevice.name, name, payload, ErrorMessage))
+            else:
+                self.errorLog(u"received '%s:%s' %s version update to %s failed: %s" % (nodeId, childId, name, payload, ErrorMessage))
 
-        device = self.checkDevice(nodeId = nodeId, childId = childId)
+    def processSetCommand(self, nodeId, childId, itemType, payload):
+        address = self.getAddress(nodeId = nodeId, childId = childId)
+
+        device = self.getDevice(address = address)
+
+        indigoDevice = None
+
+        text = self.getVariableText(itemType)
+
+        try:
+            if device and device["id"]:
+                indigoDevice = indigo.devices[device["id"]]
+
+            if indigoDevice:
+                self.updateState(indigoDevice, itemType, payload)
+
+                indigo.server.log(u"received '%s' %s %s" % (indigoDevice.name, text, payload))
+            else:
+                indigo.server.log(u"received '%s:%s' %s %s" % (nodeId, childId, text, payload))
+        except Exception, (ErrorMessage):
+            if indigoDevice:
+                self.errorLog(u"received '%s' %s %s failed: %s" % (indigoDevice.name, text, payload, ErrorMessage))
+            else:
+                self.errorLog(u"received '%s:%s' %s %s failed: %s" % (nodeId, childId, text, payload, ErrorMessage))
+
+    def processRequestCommand(self, nodeId, childId, itemType, payload):
+        address = self.getAddress(nodeId = nodeId, childId = childId)
+
+        device = self.getDevice(address = address)
+
+        indigoDevice = None
 
         field = self.getVariableField(itemType)
-        value = None
+        text = self.getVariableText(itemType)
 
         try:
             if device and device["id"]:
                 indigoDevice = indigo.devices[device["id"]]
 
-                if indigoDevice:
-                    value = indigoDevice.states[field]
-        except:
-            pass
-        finally:
-            value = self.getVariableValue(field, value)
+            if indigoDevice:
+                value = indigoDevice.states[field]
 
-            if value is not None:
-                self.sendAcknowledgeVariableCommand(nodeId, childId, itemType, value)
+                value = self.getVariableValue(field, value)
 
-    def processAcknowledgeVariableCommand(self, nodeId, childId, itemType, payload):
-        indigo.server.log \
-            (u"received acq variable %s (%s:%s) %s" % (self.getVariableText(itemType), nodeId, childId, payload))
+                if value is not None:
+                    self.sendStreamCommand(nodeId, childId, itemType, value)
 
-        device = self.checkDevice(nodeId = nodeId, childId = childId)
+                indigo.server.log(u"received status request for '%s:%s' %s %s" % (nodeId, childId, text, payload))
+            else:
+                indigo.server.log(u"received status request for '%s' %s %s" % (indigoDevice.name, text, payload))
+        except Exception, (ErrorMessage):
+            if indigoDevice:
+                self.errorLog(u"received status request for '%s' %s %s failed: %s" % (indigoDevice.name, text, payload, ErrorMessage))
+            else:
+                self.errorLog(u"received status request for '%s:%s' %s %s failed: %s" % (nodeId, childId, text, payload, ErrorMessage))
 
-        try:
-            if device and device["id"]:
-                indigoDevice = indigo.devices[device["id"]]
-
-                if indigoDevice:
-                    pass
-        except:
-            pass
-
-    def processInternalCommand(self, nodeId, childId, itemType, payload):
-        indigo.server.log(u"%s (%s:%s) %s" % (self.getInternalName(itemType), nodeId, childId, payload))
-
-        if itemType == self.getInternalNumber("BATTERY_DATE"):
-            # 1 Deprecated
-            return
-        elif itemType == self.getInternalNumber("LAST_TRIP"):
-            # 2 Deprecated
-            return
-        elif itemType == self.getInternalNumber("LAST_UPDATE"):
-            # 8 Deprecated
-            return
-        elif itemType == self.getInternalNumber("PING"):
-            # 9 Ignore
-            return
-        elif itemType == self.getInternalNumber("PING_ACK"):
-            # 10 Ignore
-            return
-
+    def processStreamCommand(self, nodeId, childId, itemType, payload):
         address = self.getAddress(nodeId = nodeId, childId = childId)
 
-        device = self.checkDevice(address = address)
+        device = self.getDevice(address = address)
 
         indigoDevice = None
 
         try:
             if device and device["id"]:
                 indigoDevice = indigo.devices[device["id"]]
-        except:
-            indigo.server.log(u"processing failed: %s" % sys.exc_info()[0], isError = True)
 
+            if indigoDevice:
+                indigo.server.log(u"received stream request for '%s:%s' %s" % (nodeId, childId, payload))
+            else:
+                indigo.server.log(u"received stream request for '%s' %s" % (indigoDevice.name, payload))
+        except Exception, (ErrorMessage):
+            if indigoDevice:
+                self.errorLog(u"received stream request for '%s' %s failed: %s" % (indigoDevice.name, payload, ErrorMessage))
+            else:
+                self.errorLog(u"received stream request for '%s:%s' %s failed: %s" % (nodeId, childId, payload, ErrorMessage))
+
+    def processInternalCommand(self, nodeId, childId, itemType, payload):
         if itemType == self.getInternalNumber("BATTERY_LEVEL"):
-            # 0
-            value = self.updateState(indigoDevice, "batteryLevel", payload)
+            childId = 0
 
-            if value:
-                indigo.server.log(u"received \"%s\" %s" % (indigoDevice.name, value))
-        elif itemType == self.getInternalNumber("TIME"):
-            # 3
-            self.sendInternalCommand(nodeId, childId, itemType, time.time())
-        elif itemType == self.getInternalNumber("VERSION"):
-            # 4
-            self.updateDevice(device, address, { "version" : payload })
+        address = self.getAddress(nodeId = nodeId, childId = childId)
 
-            self.updateProperties(indigoDevice, { "version" : payload})
-        elif itemType == self.getInternalNumber("REQUEST_ID"):
-            # 5
-            self.sendInternalCommand(nodeId, childId, itemType, self.nextAvailableNodeId())
-        elif itemType == self.getInternalNumber("INCLUSION_MODE"):
-            # 6
-            if nodeId == 0 and childId == 0:
-                if payload == "1":
-                    self.inclusionMode = True
-                else:
-                    self.inclusionMode = False
-        elif itemType == self.getInternalNumber("RELAY_NODE"):
-            # 7
-            if payload == "1":
+        device = self.getDevice(address = address)
+
+        indigoDevice = None
+
+        name = self.getInternalName(itemType)
+        text = self.getInternalText(itemType)
+
+        try:
+            if device and device["id"]:
+                indigoDevice = indigo.devices[device["id"]]
+
+            if itemType == self.getInternalNumber("BATTERY_LEVEL"):
+                # 0
+                self.updateProperties(indigoDevice, { "SupportsBatteryLevel" : True })
+
+                self.updateState(indigoDevice, "batteryLevel", payload)
+            elif itemType == self.getInternalNumber("TIME"):
+                # 1
+                self.sendInternalCommand(nodeId, childId, itemType, time.time())
+            elif itemType == self.getInternalNumber("VERSION"):
+                # 2
+                self.updateDevice(device, address, { "version" : payload })
+
+                if nodeId == kGatewayNodeId and childId == kGatewayChildId:
+                    self.gatewayVersion = device["version"]
+
+                self.updateProperties(indigoDevice, { "version" : payload})
+
                 self.updateState(indigoDevice, "state", kOnlineState)
-            elif indigoDevice and indigoDevice.errorState != kOfflineState:
-                indigoDevice.setErrorStateOnServer(kOfflineState)
-        elif itemType == self.getInternalNumber("LOG_MESSAGE"):
-            # 11
-            if "Arduino startup complete" in payload:
-                self.updateState(indigoDevice, "state", kOnlineState)
+            elif itemType == self.getInternalNumber("ID_REQUEST"):
+                # 3
+                self.sendInternalCommand(nodeId, childId, "ID_RESPONSE", self.nextAvailableNodeId())
+                pass
+            elif itemType == self.getInternalNumber("ID_RESPONSE"):
+                # 4 Ignore
+                pass
+            elif itemType == self.getInternalNumber("INCLUSION_MODE"):
+                # 5
+                if nodeId == kGatewayNodeId and childId == kGatewayChildId:
+                    if payload == "1":
+                        self.inclusionMode = True
+                    else:
+                        self.inclusionMode = False
+            elif itemType == self.getInternalNumber("CONFIG"):
+                # 6
+                self.sendInternalCommand(nodeId, childId, itemType, self.unit)
+                pass
+            elif itemType == self.getInternalNumber("PING"):
+                # 7 Ignore
+                pass
+            elif itemType == self.getInternalNumber("PING_ACK"):
+                # 8 Ignore
+                pass
+            elif itemType == self.getInternalNumber("LOG_MESSAGE"):
+                # 9
+                if "Arduino startup complete" in payload:
+                    self.updateState(indigoDevice, "state", kOnlineState)
 
-                self.sendInternalCommand(nodeId, childId, "VERSION", "Get version")
+                    self.gatewayAvailable = True
 
-                self.startInclusionMode()
-        elif itemType == self.getInternalNumber("CHILDREN"):
-            # 12
-            self.updateProperties(indigoDevice, { "children" : payload })
-        elif itemType == self.getInternalNumber("UNIT"):
-            # 13
-            self.sendInternalCommand(nodeId, childId, itemType, self.unit)
-        elif itemType == self.getInternalNumber("SKETCH_NAME"):
-            # 14
-            self.updateDevice(device, address, { "model" : payload })
+                name = ""
+            elif itemType == self.getInternalNumber("CHILDREN"):
+                # 10
+                self.updateProperties(indigoDevice, { "children" : payload })
+            elif itemType == self.getInternalNumber("SKETCH_NAME"):
+                # 11
+                self.updateDevice(device, address, { "model" : payload })
 
-            self.updateProperties(indigoDevice, { "model" : payload })
-        elif itemType == self.getInternalNumber("SKETCH_VERSION"):
-            # 15
-            self.updateDevice(device, address, { "modelVersion" : payload })
+                self.updateProperties(indigoDevice, { "model" : payload })
+            elif itemType == self.getInternalNumber("SKETCH_VERSION"):
+                # 12
+                self.updateDevice(device, address, { "modelVersion" : payload })
 
-            self.updateProperties(indigoDevice, { "modelVersion" : payload })
+                self.updateProperties(indigoDevice, { "modelVersion" : payload })
+            else:
+                raise Exception("item type not found")
+
+            if indigoDevice:
+                indigo.server.log(u"received '%s' %s%s%s" % (indigoDevice.name, name, text, payload))
+            else:
+                indigo.server.log(u"received '%s:%s' %s%s%s" % (nodeId, childId, name, text, payload))
+        except Exception, (ErrorMessage):
+            if indigoDevice:
+                self.errorLog(u"received '%s' %s%s%s failed: %s" % (indigoDevice.name, name, text, payload, ErrorMessage))
+            else:
+                self.errorLog(u"received '%s:%s' %s%s%s failed: %s" % (nodeId, childId, name, text, payload, ErrorMessage))
 
     ########################################
     # Outgoing messages
     ########################################
-    def sendPresentationCommand(self, nodeId, childId, itemType, value):
-        itemType = self.getSensorNumber(itemType)
+    def sendStreamCommand(self, nodeId, childId, itemType, value):
+        field = self.getVariableField(itemType)
+        type = self.getVariableNumber(itemType)
 
-        self.sendCommand(nodeId, childId, "PRESENTATION", itemType, value)
+        uiValue = self.uiValue(field, type, value)
 
-    def sendAcknowledgeVariableCommand(self, nodeId, childId, itemType, value):
-        itemType = self.getVariableNumber(itemType)
+        self.sendCommand(nodeId, childId, "STREAM", type, value, uiValue)
 
-        self.sendCommand(nodeId, childId, "ACK_VARIABLE", itemType, value)
+    def sendSetCommand(self, nodeId, childId, itemType, value):
+        field = self.getVariableField(itemType)
+        type = self.getVariableNumber(itemType)
 
-    def sendSetVariableCommand(self, nodeId, childId, itemType, value):
-        itemType = self.getVariableNumber(itemType)
+        uiValue = self.uiValue(field, type, value)
 
-        self.sendCommand(nodeId, childId, "SET_VARIABLE", itemType, value)
+        self.sendCommand(nodeId, childId, "SET", 1, type, value, uiValue)
 
-    def sendRequestVariableCommand(self, nodeId, childId, itemType, value):
-        itemType = self.getVariableNumber(itemType)
+    def sendRequestResponse(self, nodeId, childId, itemType, value):
+        field = self.getVariableField(itemType)
+        type = self.getVariableNumber(itemType)
 
-        self.sendCommand(nodeId, childId, "REQ_VARIABLE", itemType, value)
+        uiValue = self.uiValue(field, type, value)
+
+        self.sendCommand(nodeId, childId, "SET", 1, type, value, uiValue)
 
     def sendInternalCommand(self, nodeId, childId, itemType, value):
-        itemType = self.getInternalNumber(itemType)
+        name = self.getInternalName(itemType)
+        type = self.getInternalNumber(itemType)
 
-        self.sendCommand(nodeId, childId, "INTERNAL", itemType, value)
+        uiValue = self.uiValue(name, type, value)
 
-    def sendCommand(self, nodeId, childId, messageType, itemType, value):
+        self.sendCommand(nodeId, childId, "INTERNAL", 0, type, value, uiValue)
+
+    def sendCommand(self, nodeId, childId, messageType, ack, itemType, value, uiValue):
+        address = self.getAddress(nodeId = nodeId, childId = childId)
+
+        device = self.getDevice(address = address)
+
+        indigoDevice = None
+
         messageType = self.getMessageNumber(messageType)
 
-        command = "%s;%s;%s;%s;%s" % (nodeId, childId, messageType, itemType, value)
+        try:
+            command = "%s;%s;%s;%s;%s;%s" % (nodeId, childId, messageType, ack, itemType, value)
 
-        if self.connection and self.connection.writable:
-            self.connection.write(command + "\n")
-            self.debugLog(u"Sending Command %s" % command)
+            self.debugLog(u"command %s" % command)
 
-            return True
-        else:
-            indigo.server.log(u"send command %s failed: Can't write to serial port" % command, isError = True)
+            if device and device["id"]:
+                indigoDevice = indigo.devices[device["id"]]
 
-            return False
+            if self.connection and self.connection.writable:
+                self.connection.write(command + "\n")
+
+                if indigoDevice:
+                    indigo.server.log(u"sent '%s' %s " % (indigoDevice.name, uiValue))
+                else:
+                    indigo.server.log(u"sent '%s:%s' %s " % (nodeId, childId, uiValue))
+
+                    return True
+            else:
+               raise Exception("Can't write to serial port")
+        except Exception, (ErrorMessage):
+            if indigoDevice:
+                self.errorLog(u"send '%s' %s failed: %s" % (indigoDevice.name, uiValue, ErrorMessage))
+            else:
+                self.errorLog(u"send '%s:%s' %s failed: %s" % (nodeId, childId, uiValue, ErrorMessage))
+
+        return False
+
+    ########################################
+    # Action methods
+    ########################################
+
+
 
     ########################################
     # Device methods
     ########################################
-    def checkDevice(self, indigoDevice = None, nodeId = None, childId = None, address = None):
-        if nodeId and (nodeId == -1 or nodeId == kBoardNodeId or childId == -1):
-            return None
-
+    def getDevice(self, indigoDevice = None, nodeId = None, childId = None, address = None):
         if not address:
             address = self.getAddress(nodeId = nodeId, childId = childId)
         else:
             address = self.getAddress(address = address)
 
-            identifiers = self.getIdentifiers(address)
+        if nodeId == kNoneNodeId or childId == kNoneChildId or nodeId == kMaxNodeId or childId == kMaxChildId:
+            self.debugLog(u"get device %s:%s skipped" % nodeId, childId)
 
-            nodeId = identifiers[0]
-            childId = identifiers[1]
+            return None
 
-        #if self.inclusionMode or indigoDevice or nodeId == 0:
+        self.debugLog(u"get device %s" % address)
 
         if not address in self.devices:
+            if not nodeId:
+                identifiers = self.getIdentifiers(address)
+
+                nodeId = identifiers[0]
+                childId = identifiers[1]
+
             device = self.createDevice(nodeId, childId, address)
+
+            self.sendInternalCommand(nodeId, childId, "VERSION", "Get Version")
+
+            if nodeId != kGatewayNodeId:
+                self.sendInternalCommand(nodeId, childId, "SKETCH_NAME", "Get Sketch Name")
         else:
             device = self.devices[address]
 
@@ -669,20 +736,6 @@ class Plugin(indigo.PluginBase):
                 properties = { "id" : indigoDevice.id }
 
                 self.updateDevice(device, address, properties)
-
-            self.updateNodeIds(nodeId, False)
-
-        if self.connection and device and nodeId != kMaxNodeId:
-            if not device["version"]:
-                self.sendInternalCommand(nodeId, childId, "VERSION", "Get Version")
-
-            if device["type"] != self.getSensorNumber("ARDUINO_NODE") and device["type"] != self.getSensorNumber \
-                            ("ARDUINO_RELAY"):
-                if not device["model"]:
-                    self.sendInternalCommand(nodeId, childId, "SKETCH_NAME", "Get Sketch Name")
-
-                #if not device["modelVersion"]:
-                #    self.sendInternalCommand(nodeId, childId, "SKETCH_VERSION", "Get Sketch Version")
 
         if address in self.devices:
             return self.devices[address]
@@ -692,10 +745,12 @@ class Plugin(indigo.PluginBase):
     def createDevice(self, nodeId, childId, address):
         device = indigo.Dict()
 
+        self.debugLog(u"create device %s" % address)
+
         if nodeId == 0:
             device["type"] = self.getSensorNumber("ARDUINO_NODE")
         else:
-            device["type"] = -1
+            device["type"] = kNoneType
 
         device["version"] = ""
         device["id"] = ""
@@ -712,12 +767,18 @@ class Plugin(indigo.PluginBase):
         if not device:
             return
 
-        self.debugLog(u"updateDevice %s %s" % (properties, address))
-
         updated = False
 
         for property in properties:
-            if not hasattr(device, property) or not device[property] == properties[property]:
+            if not property in device:
+                self.debugLog(u"update device %s created %s = '%s'" % (address, property, properties[property]))
+
+                device[property] = properties[property]
+
+                updated = True
+            elif device[property] != properties[property]:
+                self.debugLog(u"update device %s updated %s = '%s'" % (address, property, properties[property]))
+
                 device[property] = properties[property]
 
                 updated = True
@@ -744,12 +805,16 @@ class Plugin(indigo.PluginBase):
         if not indigoDevice:
             return
 
-        name = self.getVariableText(itemType)
+        text = self.getVariableText(itemType)
         field = self.getVariableField(itemType)
 
         uiValue = None
 
-        if field == "temperature":
+        if itemType == "batteryLevel":
+            field = itemType
+            value = int(payload)
+            uiValue = u"%s%%" % payload
+        elif field == "temperature":
             value = float(payload)
 
             if self.unit == "M":
@@ -769,15 +834,15 @@ class Plugin(indigo.PluginBase):
             value = str(payload)
 
         if indigoDevice:
-            if value != indigoDevice.states[field]:
+            if itemType == "batteryLevel" or value != indigoDevice.states[field]:
                 if uiValue:
                     indigoDevice.updateStateOnServer(field, value = value, uiValue = uiValue)
 
-                    return u"%s %s" % (name, uiValue)
+                    return u"%s %s" % (text, uiValue)
                 else:
                     indigoDevice.updateStateOnServer(field, value = value)
 
-                    return u"%s %s" % (name, value)
+                    return u"%s %s" % (text, value)
 
         return None
 
@@ -795,7 +860,7 @@ class Plugin(indigo.PluginBase):
             indigoProperties.update(properties)
             indigoDevice.replacePluginPropsOnServer(indigoProperties)
 
-    def hasChildren(self, selectedNodeId):
+    def hasDeviceId(self, selectedNodeId):
         for address in self.devices:
             device = self.devices[address]
 
@@ -804,16 +869,34 @@ class Plugin(indigo.PluginBase):
             nodeId = identifiers[0]
             childId = identifiers[1]
 
-            if nodeId == selectedNodeId and childId < kBoardChildId and device["type"] > -1:
+            if nodeId == selectedNodeId and device["id"]:
                 return True
 
         return False
+
+    def hasChildren(self, selectedNodeId):
+        count = 0
+
+        for address in self.devices:
+            try:
+                device = self.devices[address]
+
+                identifiers = self.getIdentifiers(address)
+
+                nodeId = identifiers[0]
+
+                if nodeId == selectedNodeId and not device["id"]:
+                    count = count + 1
+            except Exception:
+                pass
+
+        return False if count < 2 else True
 
     def addIndigoChildren(self, selectedNodeId):
         if selectedNodeId == 0:
             boardAddress = self.getAddress(nodeId = selectedNodeId, childId = 0)
         else:
-            boardAddress = self.getAddress(nodeId = selectedNodeId, childId = kBoardChildId)
+            boardAddress = self.getAddress(nodeId = selectedNodeId, childId = kMaxChildId)
 
         board = self.getDevice(address = boardAddress)
 
@@ -824,9 +907,9 @@ class Plugin(indigo.PluginBase):
                 nodeId = identifiers[0]
                 childId = identifiers[1]
 
-                if selectedNodeId == nodeId and address != boardAddress:
-                    device = self.getDevice(address = address)
+                device = self.getDevice(address = address)
 
+                if selectedNodeId == nodeId and (address != boardAddress or device["type"] == self.getSensorNumber("ARDUINO_RELAY")):
                     deviceName = self.getSensorName(device["type"])
                     deviceType = self.getSensorKey(device["type"])
 
@@ -838,7 +921,7 @@ class Plugin(indigo.PluginBase):
                         boardModel = self.getSensorName(board["type"])
 
                     if board["modelVersion"]:
-                        indigoDevice.model = ("%s (%s)" % (boardModel, board["modelVersion"]))
+                        indigoDevice.model = ("%s (SK%s)" % (boardModel, board["modelVersion"]))
                     else:
                         indigoDevice.model = ("%s" % boardModel)
 
@@ -858,7 +941,7 @@ class Plugin(indigo.PluginBase):
                     if deviceType:
                         properties["deviceType"] = self.getSensorNumber(device["type"])
                     else:
-                        properties["deviceType"] = -1
+                        properties["deviceType"] = kNoneType
 
                     if device["version"]:
                         properties["version"] = device["version"]
@@ -871,61 +954,65 @@ class Plugin(indigo.PluginBase):
                         properties["model"] = ""
 
                     self.updateProperties(indigoDevice, properties)
-
-                    self.sendInternalCommand(nodeId, childId, "VERSION", "Get version")
-            except:
-                indigo.server.log(u"add children failed: %s" % sys.exc_info()[0], isError = True)
+            except Exception, (ErrorMessage):
+                self.errorLog(u"add children failed: %s" % ErrorMessage)
 
     def loadDevices(self):
         if "devices" in self.pluginPrefs:
             self.devices = self.pluginPrefs["devices"]
-
-        self.debugLog(u"devices:\n%s" % self.devices)
 
         if "nodeIds" in self.pluginPrefs:
             self.nodeIds = self.pluginPrefs["nodeIds"]
         else:
             self.setupNodeIds()
 
-        #self.debugLog(u"nodeIds:\n%s" % self.nodeIds)
-
-        for deviceId in indigo.devices.iter("self"):
-            try:
-                indigoDevice = indigo.devices[deviceId]
-
-                #self.debugLog(u"indigoDevice:\n%s" % indigoDevice)
-                self.debugLog(u"indigoDevice: %s %s %s" % (indigoDevice.name, indigoDevice.id, indigoDevice.address))
-
-                if indigoDevice.address:
-                    address = self.getAddress(address = indigoDevice.address)
-
-                    self.checkDevice(indigoDevice, address = address)
-
-                properties = indigoDevice.pluginProps
-
-                if len(properties) > 0:
-                    if properties["deviceType"] == "ARDUINO_NODE" or properties["deviceType"] == "ARDUINO_RELAY":
-                        if self.connection and self.connection.isOpen():
-                            self.updateState(indigoDevice, "state", kOnlineState)
-                        elif indigoDevice and indigoDevice.errorState != kOfflineState:
-                            indigoDevice.setErrorStateOnServer(kOfflineState)
-            except:
-                indigo.server.log(u"load devices failed %s" % sys.exc_info()[0], isError = True)
-
-    def getDevice(self, nodeId = None, childId = None, address = None):
-        device = None
-
-        if not address:
-            address = self.getAddress(nodeId = nodeId, childId = childId)
-
         try:
-            device = self.devices[address]
-        except:
-            pass
+            for address in self.devices:
+                 try:
+                    device = self.devices[address]
 
-        self.debugLog(u"getDevice device: %s" % device)
+                    self.debugLog(u"available device\n%s" % device)
 
-        return device
+                    identifiers = self.getIdentifiers(address)
+
+                    nodeId = identifiers[0]
+                    childId = identifiers[1]
+
+                    deviceId = device["id"]
+
+                    if not deviceId in indigo.devices:
+                        self.updateDevice(device, address, { "id" : "" })
+
+                    if self.connection and self.connection.isOpen():
+                        if nodeId == kGatewayNodeId and childId == kGatewayChildId:
+                            self.gatewayVersion = device["version"]
+
+                            self.sendInternalCommand(nodeId, childId, "VERSION", "Get Version")
+                        elif device["type"] == kNoneType:
+                            self.sendInternalCommand(nodeId, childId, "VERSION", "Get Version")
+                            self.sendInternalCommand(nodeId, childId, "SKETCH_NAME", "Get Sketch Name")
+                 except Exception, (ErrorMessage):
+                    pass
+
+            for deviceId in indigo.devices.iter("self"):
+                try:
+                    indigoDevice = indigo.devices[deviceId]
+
+                    self.debugLog(u"used device\n%s" % indigoDevice)
+
+                    if indigoDevice.address:
+                        address = self.getAddress(address = indigoDevice.address)
+
+                        device = self.getDevice(indigoDevice, address = address)
+
+                    if not (self.connection and self.connection.isOpen()):
+                        indigoDevice.setErrorStateOnServer(kOfflineState)
+                except Exception, (ErrorMessage):
+                    pass
+        except Exception, (ErrorMessage):
+            self.errorLog(u"load devices failed %s" % ErrorMessage)
+
+        self.debugLog(u"found %s available devices" % len(self.devices))
 
     ########################################
     # Lookup methods
@@ -936,7 +1023,7 @@ class Plugin(indigo.PluginBase):
         elif itemType in kMessageTypes:
             return kMessageTypes[itemType]
 
-        return -1
+        return kNoneType
 
     def getMessageKey(self, itemType):
         if isinstance(itemType, int):
@@ -954,7 +1041,7 @@ class Plugin(indigo.PluginBase):
         elif itemType in kSensorTypes:
             return kSensorTypes[itemType][0]
 
-        return -1
+        return kNoneType
 
     def getSensorName(self, itemType):
         if isinstance(itemType, int):
@@ -982,7 +1069,7 @@ class Plugin(indigo.PluginBase):
         elif itemType in kVariableTypes:
             return kVariableTypes[itemType][0]
 
-        return -1
+        return kNoneType
 
     def getVariableField(self, itemType):
         if isinstance(itemType, int):
@@ -1020,7 +1107,17 @@ class Plugin(indigo.PluginBase):
         elif itemType in kInternalTypes:
             return kInternalTypes[itemType][0]
 
-        return -1
+        return kNoneType
+
+    def getInternalText(self, itemType):
+        if isinstance(itemType, int):
+            for key in kInternalTypes:
+                if kInternalTypes[key][0] == itemType:
+                    return kInternalTypes[key][2]
+        elif itemType in kInternalTypes:
+            return kInternalTypes[itemType][2]
+
+        return None
 
     def getInternalName(self, itemType):
         if isinstance(itemType, int):
@@ -1046,7 +1143,7 @@ class Plugin(indigo.PluginBase):
         for nodeId in range(1, kMaxNodeId):
             id = "N%s" % nodeId
 
-            if self.nodeIds[id]:
+            if self.nodeIds[id] and self.nodeIds[id] < kMaxNodeId:
                 return nodeId
 
         return kMaxNodeId
@@ -1061,7 +1158,7 @@ class Plugin(indigo.PluginBase):
 
                 nodeId = identifiers[0]
                 childId = identifiers[1]
-            except:
+            except Exception, (ErrorMessage):
                 pass
 
         return "N%sC%s" % (nodeId, childId)
@@ -1073,14 +1170,14 @@ class Plugin(indigo.PluginBase):
                     identifiers = address[1:].split("C")
 
                     return [ int(identifiers[0]), int(identifiers[1]) ]
-                except:
+                except Exception, (ErrorMessage):
                     pass
             elif ":" in address:
                 try:
                     identifiers = address.split(":")
 
                     return [ int(identifiers[0]), int(identifiers[1]) ]
-                except:
+                except Exception, (ErrorMessage):
                     pass
 
         return None
@@ -1090,7 +1187,7 @@ class Plugin(indigo.PluginBase):
             identifiers = self.getIdentifiers(address)
 
             return "%s:%s" % (identifiers[0], identifiers[1])
-        except:
+        except Exception, (ErrorMessage):
             pass
 
         return ""
@@ -1111,7 +1208,7 @@ class Plugin(indigo.PluginBase):
                 return value.lower() in [ "yes", "true", "t", "1" ]
             elif type(value) is bool:
                 return value
-        except:
+        except Exception, (ErrorMessage):
             pass
 
         return None
@@ -1127,10 +1224,57 @@ class Plugin(indigo.PluginBase):
                     return 1
                 else:
                     return 0
-        except:
+        except Exception, (ErrorMessage):
             pass
 
         return None
+
+    def integerValue(self, value):
+        try:
+            if isinstance(value, int):
+                return int(value)
+            elif isinstance(value, float):
+                return int(float(value + 0.5))
+            elif type(value) is bool:
+                if value:
+                    return 1
+                else:
+                    return 0
+            elif type(value) is str:
+                try:
+                    return int(value)
+                except ValueError:
+                    return int(float(value + 0.5))
+        except Exception, (ErrorMessage):
+            pass
+
+        return None
+
+    def uiValue(self, field, type, value):
+        if not field or not type or not value:
+            uiValue = ""
+        if type == "batteryLevel":
+            uiValue = u"%s%%" % value
+        elif field == "temperature":
+            value = float(value)
+
+            if self.unit == "M":
+                uiValue = u"%.1f °C" % value
+            else:
+                uiValue = u"%.1f °F" % value
+        elif field == "onOffState" or field == "onoroff":
+            value = self.booleanValue(value)
+
+            if value:
+                uiValue = u"on"
+            else:
+                uiValue = u"off"
+        elif value:
+            uiValue = str(value)
+        else:
+            uiValue = ""
+
+        return uiValue
 
     ########################################
     # Start connecting
@@ -1141,21 +1285,10 @@ class Plugin(indigo.PluginBase):
         else:
             self.address = "undefined"
 
-        address = self.getAddress(nodeId = 0, childId = 0)
-
-        device = None
-        indigoDevice = None
-
-        if "address" in self.devices:
-            device = self.devices[address]
-
-            if device and device["id"]:
-                indigoDevice = indigo.devices[device["id"]]
-
         if self.connection:
             self.connectionAttempts = 0
 
-            indigo.server.log(u"Connected at address: %s (baudrate: %s)" % (self.address, kBaudrate))
+            indigo.server.log(u"connected to Gateway on %s" % self.address)
 
             return True
         else:
@@ -1202,7 +1335,7 @@ class Plugin(indigo.PluginBase):
 
         self.interval = kWorkerSleep
 
-        self.sendInternalCommand(kGatewayId, 0, "INCLUSION_MODE", 1)
+        self.sendInternalCommand(kGatewayNodeId, kGatewayChildId, "INCLUSION_MODE", 1)
 
     def stopInclusionMode(self):
         indigo.server.log(u"Turning off inclusion mode")
@@ -1211,7 +1344,7 @@ class Plugin(indigo.PluginBase):
 
         self.inclusionMode = False
 
-        self.sendInternalCommand(kGatewayId, 0, "INCLUSION_MODE", 0)
+        self.sendInternalCommand(kGatewayNodeId, kGatewayChildId, "INCLUSION_MODE", 0)
 
     def reloadDevices(self):
         indigo.server.log(u"Reload devices")
@@ -1223,7 +1356,5 @@ class Plugin(indigo.PluginBase):
 
         self.pluginPrefs["devices"] = self.devices
         self.pluginPrefs["nodeIds"] = self.nodeIds
-
-        self.startInclusionMode()
 
         self.loadDevices()

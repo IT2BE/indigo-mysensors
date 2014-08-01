@@ -13,4 +13,8 @@
             </Field>
 		</ConfigUI>
 	</Action-->
+    <!--Action id="send" deviceFilter="indigo.device,self">
+		<Name>Request Full Status Update</Name>
+		<CallbackMethod>sendUpdateRequest</CallbackMethod>
+	</Action-->
 </Actions>

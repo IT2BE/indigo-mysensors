@@ -1,5 +1,7 @@
+<?xml version="1.0"?>
+<!-- Copyright (C)2014-2014 Marcel Trapman. -->
 <MenuItems>
-	<MenuItem id="debugginMenu">
+	<MenuItem id="debuggingMenu">
 		<Name>Toggle Debugging</Name>
         <CallbackMethod>toggleDebugging</CallbackMethod>
 	</MenuItem>

@@ -487,8 +487,8 @@
     	<UiDisplayStateId>state</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="ARDUINO_RELAY">
-		<Name>Relay</Name>
-		<Description>The Relay Actuator.</Description>
+		<Name>Repeater</Name>
+		<Description>The Repeater.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
@@ -570,6 +570,33 @@
 	<Device type="custom" id="WATER">
 		<Name>Water</Name>
 		<Description>The Water Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="AIR_QUALITY">
+		<Name>Air Quality</Name>
+		<Description>The Air Quality Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
