@@ -206,7 +206,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="humidity" defaultValue="0">
 		        <ValueType>Number</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
@@ -214,7 +214,7 @@
 		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
+	    <UiDisplayStateId>humidity</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="BARO">
 		<Name>Barometer</Name>
@@ -233,7 +233,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="pressure" defaultValue="0">
 		        <ValueType>Number</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
@@ -241,7 +241,7 @@
 		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
+	    <UiDisplayStateId>barometer</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="WIND">
 		<Name>Wind</Name>
@@ -260,7 +260,14 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="speed" defaultValue="0">
+		        <ValueType>Number</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+			<State id="gust" defaultValue="0">
 		        <ValueType>Number</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
@@ -268,7 +275,7 @@
 		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
+	    <UiDisplayStateId>speed</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="RAIN">
 		<Name>Rain</Name>
@@ -287,7 +294,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="rain" defaultValue="0">
 		        <ValueType>Number</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
@@ -295,7 +302,7 @@
 		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
+	    <UiDisplayStateId>rain</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="UV">
 		<Name>Ultra Violet</Name>
@@ -314,7 +321,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="uv" defaultValue="0">
 		        <ValueType>Number</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
@@ -322,7 +329,7 @@
 		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
+	    <UiDisplayStateId>uv</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="WEIGHT">
 		<Name>Weight</Name>
@@ -342,7 +349,7 @@
 		</ConfigUI>
         <States>
 			<State id="value" defaultValue="0">
-		        <ValueType>Number</ValueType>
+		        <ValueType>String</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
 		        <ControlPageLabel>Sensor Value</ControlPageLabel>
@@ -369,7 +376,7 @@
 		</ConfigUI>
         <States>
 			<State id="value" defaultValue="0">
-		        <ValueType>Number</ValueType>
+		        <ValueType>String</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
 		        <ControlPageLabel>Sensor Value</ControlPageLabel>
@@ -396,7 +403,7 @@
 		</ConfigUI>
         <States>
 			<State id="value" defaultValue="0">
-		        <ValueType>Number</ValueType>
+		        <ValueType>String</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
 		        <ControlPageLabel>Sensor Value</ControlPageLabel>
@@ -422,7 +429,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="distance" defaultValue="0">
 		        <ValueType>Number</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
@@ -430,7 +437,7 @@
 		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
+	    <UiDisplayStateId>distance</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="LIGHT_LEVEL">
 		<Name>Luminance</Name>
@@ -449,7 +456,7 @@
 		    </Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="lux" defaultValue="0">
 		        <ValueType>Number</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
@@ -457,7 +464,7 @@
 		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
+	    <UiDisplayStateId>lux</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="ARDUINO_NODE">
 		<Name>Node</Name>
@@ -558,7 +565,7 @@
 		</ConfigUI>
         <States>
 			<State id="value" defaultValue="0">
-		        <ValueType>Number</ValueType>
+		        <ValueType>String</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
 		        <ControlPageLabel>Sensor Value</ControlPageLabel>
@@ -585,7 +592,7 @@
 		</ConfigUI>
         <States>
 			<State id="value" defaultValue="0">
-		        <ValueType>Number</ValueType>
+		        <ValueType>String</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
 		        <ControlPageLabel>Sensor Value</ControlPageLabel>
@@ -612,7 +619,61 @@
 		</ConfigUI>
         <States>
 			<State id="value" defaultValue="0">
-		        <ValueType>Number</ValueType>
+		        <ValueType>String</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="CUSTOM">
+		<Name>Generic</Name>
+		<Description>A Generic Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>String</ValueType>
+		        <TriggerLabel>Sensor Value</TriggerLabel>
+		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
+		        <ControlPageLabel>Sensor Value</ControlPageLabel>
+		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		    </State>
+	    </States>
+	    <UiDisplayStateId>value</UiDisplayStateId>
+	</Device>
+	<Device type="custom" id="DUST">
+		<Name>Dust</Name>
+		<Description>A Dust Sensor.</Description>
+		<RemoteDisplay>true</RemoteDisplay>
+		<ConfigUI>
+			<Field id="address" type="textfield" readonly="true">
+		        <Label>Address:</Label>
+                <Description>Formatted as Radio ID : Child ID</Description>
+		    </Field>
+			<Field id="model" type="textfield" readonly="true">
+		        <Label>Model:</Label>
+		    </Field>
+			<Field id="version" type="textfield" readonly="true">
+		        <Label>Library:</Label>>
+		    </Field>
+		</ConfigUI>
+        <States>
+			<State id="value" defaultValue="0">
+		        <ValueType>String</ValueType>
 		        <TriggerLabel>Sensor Value</TriggerLabel>
 		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
 		        <ControlPageLabel>Sensor Value</ControlPageLabel>

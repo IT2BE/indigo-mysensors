@@ -13,4 +13,25 @@
 		<Name>Reload devices</Name>
         <CallbackMethod>reloadDevices</CallbackMethod>
 	</MenuItem>
+    <MenuItem id="separatorMenu">
+	    <Field id="removeSeparator" type="separator"/>
+	</MenuItem>
+    <MenuItem id="failedMenu">
+		<Name>Remove Failed devices from Gateway</Name>
+        <CallbackMethod>removeFailedDevices</CallbackMethod>
+	</MenuItem>
+    <MenuItem id="removeMenu">
+		<Name>Remove device from Gateway</Name>
+        <CallbackMethod>removeDevice</CallbackMethod>
+        <ButtonTitle>Remove</ButtonTitle>
+        <ConfigUI>
+            <Field id="targetDevice" type="menu">
+                <Label>Device:</Label>
+                <List class="self" method="getAvailableDevices" />
+            </Field>
+            <Field id="targetDevicelabel" type="label" fontSize="small" fontColor="darkgray">
+                <Label>You can only permanently remove a device when the device is not configured</Label>
+            </Field>
+        </ConfigUI>
+	</MenuItem>
 </MenuItems>

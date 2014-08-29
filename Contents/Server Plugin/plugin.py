@@ -37,88 +37,108 @@ kMessageTypes = {
 
 #PRESENTATION sensor types (S_)
 kSensorTypes = {
-    "DOOR" 			        : [0,  "Door Sensor"],
-    "MOTION" 		        : [1,  "Motion Sensor"],
-    "SMOKE" 		        : [2,  "Smoke Sensor"],
-    "LIGHT" 		        : [3,  "Relay Actuator"],
-    "DIMMER" 		        : [4,  "Dimmer Actuator"],
-    "COVER" 		        : [5,  "Window Sensor"],
-    "TEMP" 			        : [6,  "Temperature Sensor"],
-    "HUM" 			        : [7,  "Humidity Sensor"],
-    "BARO" 			        : [8,  "Barometer Sensor"],
-    "WIND" 			        : [9,  "Wind Sensor"],
-    "RAIN" 			        : [10, "Rain Sensor"],
-    "UV" 			        : [11, "UV Sensor"],
-    "WEIGHT" 		        : [12, "Weight Sensor"],
-    "POWER" 		        : [13, "Power Sensor"],
-    "HEATER" 		        : [14, "Heater Sensor"],
-    "DISTANCE" 		        : [15, "Distance Sensor"],
-    "LIGHT_LEVEL"	        : [16, "Luminance Sensor"],
-    "ARDUINO_NODE"	        : [17, "Arduino Node"],
-    "ARDUINO_RELAY"	        : [18, "Arduino Repeater"],
-    "LOCK" 			        : [19, "Lock Sensor"],
-    "IR" 			        : [20, "IR Sensor"],
-    "WATER" 		        : [21, "Water Sensor"],
-	"AIR_QUALITY"           : [22, "AirQuality Sensor"]
+    "DOOR" 			            : [0,  "Door Sensor"],
+    "MOTION" 		            : [1,  "Motion Sensor"],
+    "SMOKE" 		            : [2,  "Smoke Sensor"],
+    "LIGHT" 		            : [3,  "Relay Actuator"],
+    "DIMMER" 		            : [4,  "Dimmer Actuator"],
+    "COVER" 		            : [5,  "Window Sensor"],
+    "TEMP" 			            : [6,  "Temperature Sensor"],
+    "HUM" 			            : [7,  "Humidity Sensor"],
+    "BARO" 			            : [8,  "Barometer Sensor"],
+    "WIND" 			            : [9,  "Wind Sensor"],
+    "RAIN" 			            : [10, "Rain Sensor"],
+    "UV" 			            : [11, "UV Sensor"],
+    "WEIGHT" 		            : [12, "Weight Sensor"],
+    "POWER" 		            : [13, "Power Sensor"],
+    "HEATER" 		            : [14, "Heater Sensor"],
+    "DISTANCE" 		            : [15, "Distance Sensor"],
+    "LIGHT_LEVEL"	            : [16, "Luminance Sensor"],
+    "ARDUINO_NODE"	            : [17, "MySensors Node"],
+    "ARDUINO_RELAY"	            : [18, "MySensors Repeater"],
+    "LOCK" 			            : [19, "Lock Sensor"],
+    "IR" 			            : [20, "IR Sensor"],
+    "WATER" 		            : [21, "Water Sensor"],
+	"AIR_QUALITY"               : [22, "AirQuality Sensor"],
+    "CUSTOM"                    : [23, "Generic Sensor"],
+    "DUST"                      : [24, "Dust Sensor"],
+    "SCENE_CONTROLLER"          : [25, "Scene Controller"]
+
 }
 
 #SET_VARIABLE, REQ_VARIABLE, ACK_VARIABLE sensor variables (V_)
 kVariableTypes = {
-    "TEMP"			        : [0,  "temperature",               "temperture update to"],
-    "HUM"			        : [1,  "humidity",                  "humidity update to"],
-    "LIGHT"			        : [2,  "onOffState",                "state update to"],
-    "DIMMER"		        : [3,  "dimmer",                    "dimmer update to"],
-    "PRESSURE"		        : [4,  "barometer",                 "pressure update to"],
-    "FORECAST"		        : [5,  "barometer",                 "forecast update to"],
-    "RAIN"			        : [6,  "rain",                      "rain update to"],
-    "RAINRATE"		        : [7,  "rain",                      "rainrate update to"],
-    "WIND"			        : [8,  "wind",                      "wind update to"],
-    "GUST"			        : [9,  "wind",                      "gust update to"],
-    "DIRECTION"		        : [10, "direction",                 "direction update to"],
-    "UV"			        : [11, "uv",                        "uv update to"],
-    "WEIGHT"		        : [12, "scale",                     "scale update to"],
-    "DISTANCE"		        : [13, "distance",                  "distance update to"],
-    "IMPEDANCE"		        : [14, "scale",                     "scale update to"],
-    "ARMED"			        : [15, "security",                  "security update to"],
-    "TRIPPED"		        : [16, "onoroff",                   "state update to"],
-    "WATT"			        : [17, "energy",                    "watt update to"],
-    "KWH"			        : [18, "energy",                    "kwh update to"],
-    "SCENE_ON"		        : [19, "scene",                     "scene on state update to"],
-    "SCENE_OFF"		        : [20, "scene",                     "scene off state update to"],
-    "HEATER"		        : [21, "user",                      "heater user update to"],
-    "HEATER_SW"		        : [22, "onoroff",                   "heater state update to"],
-    "LIGHT_LEVEL"	        : [23, "light",                     "luminance update to"],
-    "VAR_1"			        : [24, "var",                       "var 1 update to"],
-    "VAR_2"			        : [25, "var",                       "var 2 update to"],
-    "VAR_3"			        : [26, "var",                       "var 3 update to"],
-    "VAR_4"			        : [27, "var",                       "var 4 update to"],
-    "VAR_5"			        : [28, "var",                       "var 5 update to"],
-    "UP"			        : [29, "door",                      "up update to"],
-    "DOWN"			        : [30, "door",                      "down update to"],
-    "STOP"			        : [31, "door",                      "stop update to"],
-    "IR_SEND"		        : [32, "ir",                        "ir send update to"],
-    "IR_RECEIVE"	        : [33, "ir",                        "ir receive update to"],
-    "FLOW"			        : [34, "water",                     "water flow update to"],
-    "VOLUME"		        : [35, "water",                     "water volume update to"],
-    "LOCK_STATUS"	        : [36, "lock",                      "lock status update to"]
+    "TEMP"			            : [0,  "temperature",               "temperature update to"],
+    "HUM"			            : [1,  "humidity",                  "humidity update to"],
+    "LIGHT"			            : [2,  "onOffState",                "state update to"],
+    "DIMMER"		            : [3,  "dimmer",                    "dimmer update to"],
+    "PRESSURE"		            : [4,  "pressure",                  "pressure update to"],
+    "FORECAST"		            : [5,  "forecast",                  "forecast update to"],
+    "RAIN"			            : [6,  "rain",                      "rain update to"],
+    "RAINRATE"		            : [7,  "rain",                      "rainrate update to"],
+    "WIND"			            : [8,  "speed",                     "speed update to"],
+    "GUST"			            : [9,  "gust",                      "gust update to"],
+    "DIRECTION"		            : [10, "direction",                 "direction update to"],
+    "UV"			            : [11, "uv",                        "uv update to"],
+    "WEIGHT"		            : [12, "scale",                     "scale update to"],
+    "DISTANCE"		            : [13, "distance",                  "distance update to"],
+    "IMPEDANCE"		            : [14, "scale",                     "scale update to"],
+    "ARMED"			            : [15, "security",                  "security update to"],
+    "TRIPPED"		            : [16, "onoroff",                   "state update to"],
+    "WATT"			            : [17, "watt",                      "watt update to"],
+    "KWH"			            : [18, "kwh",                       "kwh update to"],
+    "SCENE_ON"		            : [19, "scene",                     "scene on state update to"],
+    "SCENE_OFF"		            : [20, "scene",                     "scene off state update to"],
+    "HEATER"		            : [21, "user",                      "heater user update to"],
+    "HEATER_SW"		            : [22, "onoroff",                   "heater state update to"],
+    "LIGHT_LEVEL"	            : [23, "lux",                       "luminance update to"],
+    "VAR_1"			            : [24, "var1",                      "var 1 update to"],
+    "VAR_2"			            : [25, "var2",                      "var 2 update to"],
+    "VAR_3"			            : [26, "var3",                      "var 3 update to"],
+    "VAR_4"			            : [27, "var4",                      "var 4 update to"],
+    "VAR_5"			            : [28, "var5",                      "var 5 update to"],
+    "UP"			            : [29, "up",                        "up update to"],
+    "DOWN"			            : [30, "down",                      "down update to"],
+    "STOP"			            : [31, "stop",                      "stop update to"],
+    "IR_SEND"		            : [32, "send",                      "ir send update to"],
+    "IR_RECEIVE"	            : [33, "receive",                   "ir receive update to"],
+    "FLOW"			            : [34, "flow",                      "water flow update to"],
+    "VOLUME"		            : [35, "volume",                    "water volume update to"],
+    "LOCK"      	            : [36, "lock",                      "lock status update to"],
+	"DUST_LEVEL"                : [37, "dust",                      "dust level update to"],
+    "VOLTAGE"                   : [38, "voltage",                   "voltage update to"],
+    "CURRENT"                   : [39, "current",                   "current update to"]
 }
 
 #INTERNAL internal messages (I_)
 kInternalTypes = {
-    "BATTERY_LEVEL"	        : [0,  "battery level ",            "update to "],
-    "TIME"			        : [1,  "time ",                     "update to "],
-    "VERSION"		        : [2,  "Arduino library version ",  "update to "],
-    "ID_REQUEST"            : [3,  "ID request ",               ""],
- 	"ID_RESPONSE"           : [4,  "ID response ",              ""],
- 	"INCLUSION_MODE"        : [5,  "inclusion mode ",           "update to "],
-  	"CONFIG"                : [6,  "config ",                   "update to "],
-    "PING"			        : [7,  "ping ",                     ""],
-    "PING_ACK"		        : [8,  "Ping ACK ",                 ""],
-    "LOG_MESSAGE"	        : [9,  "Log message ",              ""],
-    "CHILDREN"		        : [10, "Children ",                 "update to "],
-    "SKETCH_NAME"	        : [11, "Sketch name ",              "udate to "],
-    "SKETCH_VERSION"        : [12, "Sketch version ",           "update to "]
+    "BATTERY_LEVEL"	            : [0,  "battery level ",            "update to "],
+    "TIME"			            : [1,  "time ",                     "update to "],
+    "VERSION"		            : [2,  "library version ",          "update to "],
+    "ID_REQUEST"                : [3,  "ID request ",               ""],
+ 	"ID_RESPONSE"               : [4,  "ID response ",              ""],
+ 	"INCLUSION_MODE"            : [5,  "inclusion mode ",           "update to "],
+  	"CONFIG"                    : [6,  "config ",                   "update to "],
+    "PING"			            : [7,  "ping ",                     ""],
+    "PING_ACK"		            : [8,  "Ping ACK ",                 ""],
+    "LOG_MESSAGE"	            : [9,  "Log message ",              ""],
+    "CHILDREN"		            : [10, "Children ",                 "update to "],
+    "SKETCH_NAME"	            : [11, "Sketch name ",              "update to "],
+    "SKETCH_VERSION"            : [12, "Sketch version ",           "update to "],
+    "REBOOT"                    : [13, "Reboot",                    ""],
+    "GATEWAY_READY"             : [14, "Gateway ready",             ""]
 }
+
+#STREAM stream messages (ST_)
+kStreamTypes = {
+	"FIRMWARE_CONFIG_REQUEST"   : 0,
+    "FIRMWARE_CONFIG_RESPONSE"  : 1,
+    "FIRMWARE_REQUEST"          : 2,
+    "FIRMWARE_RESPONSE"         : 3,
+	"SOUND"                     : 4,
+    "IMAGE"                     : 5
+}
+
 
 class Plugin(indigo.PluginBase):
 
@@ -336,7 +356,7 @@ class Plugin(indigo.PluginBase):
             elif pluginAction.deviceAction == indigo.kDimmerRelayAction.Toggle:
                 onOffState = not indigoDevice.onState
 
-            self.updateState(indigoDevice, "LIGHT", onOffState)
+            self.updateState(indigoDevice, self.getVariableNumber("LIGHT"), onOffState)
 
             if onOffState:
                 value = 1
@@ -380,6 +400,7 @@ class Plugin(indigo.PluginBase):
         nodeId = kMaxNodeId
         childId = kNoneChildId
         messageType = kNoneType
+        acqType = kNoneType
         itemType = kNoneType
         payload = ""
 
@@ -394,7 +415,7 @@ class Plugin(indigo.PluginBase):
 
             self.debugLog(u"receive raw %s" % request)
 
-            if request[0].isalpha() or request.find(";") == kNoneType or request.count(";") < 4:
+            if request[0].isalpha() or request.find(";") == kNoneType or request.count(";") < 5:
                 raise Exception("wrong request formatting: %s" % request)
 
             arguments = request.split(";")
@@ -402,21 +423,22 @@ class Plugin(indigo.PluginBase):
             nodeId = int(arguments[0])
             childId = int(arguments[1])
             messageType = int(arguments[2])
-            itemType = int(arguments[3])
-            payload = ";".join(arguments[4:])
+            acqType = int(arguments[3])
+            itemType = int(arguments[4])
+            payload = ";".join(arguments[5:])
 
             if payload.startswith("read:") or payload.startswith("send:"):
                 pass
             elif messageType == self.getMessageNumber("PRESENTATION"):
-                self.processPresentationCommand(nodeId, childId, itemType, payload)
+                self.processPresentationCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("SET"):
-                self.processSetCommand(nodeId, childId, itemType, payload)
+                self.processSetCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("REQUEST"):
-                self.processRequestCommand(nodeId, childId, itemType, payload)
+                self.processRequestCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("INTERNAL"):
-                self.processInternalCommand(nodeId, childId, itemType, payload)
+                self.processInternalCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("STREAM"):
-                self.processStreamCommand(nodeId, childId, itemType, payload)
+                self.processStreamCommand(nodeId, childId, acqType, itemType, payload)
             else:
                 raise Exception("Unrecognized messageType %s" % messageType)
         except Exception, (ErrorMessage):
@@ -425,7 +447,7 @@ class Plugin(indigo.PluginBase):
             if "serial" in ErrorMessage:
                 self.connection = None
 
-    def processPresentationCommand(self, nodeId, childId, itemType, payload):
+    def processPresentationCommand(self, nodeId, childId, acqType, itemType, payload):
         address = self.getAddress(nodeId = nodeId, childId = childId)
 
         device = self.getDevice(address = address)
@@ -439,7 +461,7 @@ class Plugin(indigo.PluginBase):
                 indigoDevice = indigo.devices[device["id"]]
 
             if device:
-                device = self.updateDevice(device, address, { "type" : itemType, "model" : name, "version" : payload })
+                self.updateDevice(device, address, { "type" : itemType, "model" : name, "version" : payload })
 
             if indigoDevice:
                 self.updateProperties(indigoDevice, { "type" : itemType, "model" : name, "version" : payload })
@@ -453,7 +475,7 @@ class Plugin(indigo.PluginBase):
             else:
                 self.errorLog(u"received '%s:%s' %s version update to %s failed: %s" % (nodeId, childId, name, payload, ErrorMessage))
 
-    def processSetCommand(self, nodeId, childId, itemType, payload):
+    def processSetCommand(self, nodeId, childId, acqType, itemType, payload):
         address = self.getAddress(nodeId = nodeId, childId = childId)
 
         device = self.getDevice(address = address)
@@ -478,7 +500,7 @@ class Plugin(indigo.PluginBase):
             else:
                 self.errorLog(u"received '%s:%s' %s %s failed: %s" % (nodeId, childId, text, payload, ErrorMessage))
 
-    def processRequestCommand(self, nodeId, childId, itemType, payload):
+    def processRequestCommand(self, nodeId, childId, acqType, itemType, payload):
         address = self.getAddress(nodeId = nodeId, childId = childId)
 
         device = self.getDevice(address = address)
@@ -509,7 +531,7 @@ class Plugin(indigo.PluginBase):
             else:
                 self.errorLog(u"received status request for '%s:%s' %s %s failed: %s" % (nodeId, childId, text, payload, ErrorMessage))
 
-    def processStreamCommand(self, nodeId, childId, itemType, payload):
+    def processStreamCommand(self, nodeId, childId, acqType, itemType, payload):
         address = self.getAddress(nodeId = nodeId, childId = childId)
 
         device = self.getDevice(address = address)
@@ -530,7 +552,7 @@ class Plugin(indigo.PluginBase):
             else:
                 self.errorLog(u"received stream request for '%s:%s' %s failed: %s" % (nodeId, childId, payload, ErrorMessage))
 
-    def processInternalCommand(self, nodeId, childId, itemType, payload):
+    def processInternalCommand(self, nodeId, childId, acqType, itemType, payload):
         if itemType == self.getInternalNumber("BATTERY_LEVEL"):
             childId = 0
 
@@ -590,26 +612,53 @@ class Plugin(indigo.PluginBase):
                 # 8 Ignore
                 pass
             elif itemType == self.getInternalNumber("LOG_MESSAGE"):
-                # 9
-                if "Arduino startup complete" in payload:
-                    self.updateState(indigoDevice, "state", kOnlineState)
-
-                    self.gatewayAvailable = True
-
-                name = ""
+                # 9 Ignore
+                pass
             elif itemType == self.getInternalNumber("CHILDREN"):
                 # 10
                 self.updateProperties(indigoDevice, { "children" : payload })
             elif itemType == self.getInternalNumber("SKETCH_NAME"):
                 # 11
-                self.updateDevice(device, address, { "model" : payload })
+                if self.updateDevice(device, address, { "model" : (u"%s" % payload) }):
+                    for deviceId in indigo.devices.iter("self"):
+                        indigoDevice = indigo.devices[deviceId]
 
-                self.updateProperties(indigoDevice, { "model" : payload })
+                        if indigoDevice.address:
+                            identifiers = self.getIdentifiers(indigoDevice.address)
+
+                            if identifiers[0] == nodeId:
+                                model, version = indigoDevice.model.split(" (SK")
+
+                                indigoDevice.model = (u"%s (SK%s" % (payload, version))
+
+                                indigo.server.log(u"received '%s' %s%s%s" % (indigoDevice.name, name, text, payload))
+                return
             elif itemType == self.getInternalNumber("SKETCH_VERSION"):
                 # 12
-                self.updateDevice(device, address, { "modelVersion" : payload })
+                if self.updateDevice(device, address, { "modelVersion" : payload }):
+                    for deviceId in indigo.devices.iter("self"):
+                        indigoDevice = indigo.devices[deviceId]
 
-                self.updateProperties(indigoDevice, { "modelVersion" : payload })
+                        if indigoDevice.address:
+                            identifiers = self.getIdentifiers(indigoDevice.address)
+
+                            if identifiers[0] == nodeId:
+                                model, version = indigoDevice.model.split(" (SK")
+
+                                indigoDevice.model = (u"%s (SK%s)" % (model, "1.0"))
+
+                                indigo.server.log(u"received '%s' %s%s%s" % (indigoDevice.name, name, text, payload))
+                return
+            elif itemType == self.getInternalNumber("REBOOT"):
+                # 13 Ignore
+                pass
+            elif itemType == self.getInternalNumber("GATEWAY_READY"):
+                # 14
+                self.updateState(indigoDevice, "state", kOnlineState)
+
+                self.gatewayAvailable = True
+
+                name = ""
             else:
                 raise Exception("item type not found")
 
@@ -632,7 +681,7 @@ class Plugin(indigo.PluginBase):
 
         uiValue = self.uiValue(field, type, value)
 
-        self.sendCommand(nodeId, childId, "STREAM", type, value, uiValue)
+        self.sendCommand(nodeId, childId, "STREAM", 0, type, value, uiValue)
 
     def sendSetCommand(self, nodeId, childId, itemType, value):
         field = self.getVariableField(itemType)
@@ -648,7 +697,7 @@ class Plugin(indigo.PluginBase):
 
         uiValue = self.uiValue(field, type, value)
 
-        self.sendCommand(nodeId, childId, "SET", 1, type, value, uiValue)
+        self.sendCommand(nodeId, childId, "SET", 0, type, value, uiValue)
 
     def sendInternalCommand(self, nodeId, childId, itemType, value):
         name = self.getInternalName(itemType)
@@ -788,7 +837,7 @@ class Plugin(indigo.PluginBase):
 
             self.pluginPrefs["devices"] = self.devices
 
-        return device
+        return updated
 
     def updateNodeIds(self, nodeId, value):
         if nodeId == kMaxNodeId:
@@ -808,29 +857,192 @@ class Plugin(indigo.PluginBase):
         text = self.getVariableText(itemType)
         field = self.getVariableField(itemType)
 
+        value = None
         uiValue = None
 
-        if itemType == "batteryLevel":
-            field = itemType
-            value = int(payload)
-            uiValue = u"%s%%" % payload
-        elif field == "temperature":
+        if itemType == 0:
+            # TEMP, field == temperature
             value = float(payload)
 
-            if self.unit == "M":
-                uiValue = u"%.1f °C" % value
-            else:
-                uiValue = u"%.1f °F" % value
-        elif field == "onOffState":
+            uiValue = (u"%.1f °C" % value) if self.unit == "M" else (u"%.1f °F" % value)
+        elif itemType == 1:
+            # HUM, field == humidity
+            value = float(payload)
+
+            uiValue = (u"%.0f%%" % value)
+        elif itemType == 2:
+            # LIGHT, field == onOffState
             value = self.booleanValue(payload)
-        elif field == "onoroff":
+        elif itemType == 3:
+            # DIMMER, field == dimmer
+            field = "value"
+            value = str(payload)
+        elif itemType == 4:
+            # PRESSURE, field == pressure
+            value = float(payload)
+
+            uiValue = (u"%.1f Pa" % value)
+        elif itemType == 5:
+            # FORECAST, field == forecast
+            field = "value"
+            value = str(payload)
+        elif itemType == 6:
+            # RAIN, field == rain
+            value = float(payload)
+
+            uiValue = (u"%.1f mm" % value) if self.unit == "M" else (u"%.1f inch" % value)
+        elif itemType == 7:
+            # RAINRATE, field == rain
+            value = float(payload)
+
+            uiValue = (u"%.1f mm" % value) if self.unit == "M" else (u"%.1f inch" % value)
+        elif itemType == 8:
+            # WIND, field == speed
+            value = float(payload)
+
+            uiValue = (u"%.1f mps" % value) if self.unit == "M" else (u"%.1f fps" % value)
+        elif itemType == 9:
+            # GUST, field == gust
+            value = float(payload)
+
+            uiValue = (u"%.1f mps" % value) if self.unit == "M" else (u"%.1f fps" % value)
+        elif itemType == 10:
+            # DIRECTION, field == direction
+            field = "value"
+            value = str(payload)
+        elif itemType == 11:
+            # UV, field == uv
+            value = float(payload)
+
+            uiValue = u"%.1f" % value
+        elif itemType == 12:
+            # WEIGHT, field == scale
+            field = "value"
+            value = str(payload)
+        elif itemType == 13:
+            # DISTANCE, field == distance
+            value = float(payload)
+
+            uiValue = (u"%.1f cm" % value) if self.unit == "M" else (u"%.1f inch" % value)
+        elif itemType == 14:
+            # IMPEDANCE, field == scale
+            field = "value"
+            value = str(payload)
+        elif itemType == 15:
+            # ARMED, field == security
+            field = "value"
+            value = str(payload)
+        elif itemType == 16:
+            # TRIPPED, field == onoroff
             value = self.booleanValue(payload)
 
-            if value:
-                uiValue = u"on"
-            else:
-                uiValue = u"off"
+            uiValue = u"on" if value else u"off"
+        elif itemType == 17:
+            # WATT, field == watt
+            field = "value"
+            value = str(payload)
+        elif itemType == 18:
+            # KWH, field == kwh
+            field = "value"
+            value = str(payload)
+        elif itemType == 19:
+            # SCENE_ON, field == scene
+            field = "value"
+            value = str(payload)
+        elif itemType == 20:
+            # SCENE_OFF, field == scene
+            field = "value"
+            value = str(payload)
+        elif itemType == 21:
+            # HEATER, field == user
+            field = "value"
+            value = str(payload)
+        elif itemType == 22:
+            # HEATER_SW, field == onoroff
+            value = self.booleanValue(payload)
+
+            uiValue = u"on" if value else u"off"
+        elif itemType == 23:
+            # LIGHT_LEVEL, field == lux
+            value = float(payload)
+
+            uiValue = (u"%.0f lux" % value)
+        elif itemType == 24:
+            # VAR_1, field == var1
+            field = "value"
+            value = str(payload)
+        elif itemType == 25:
+            # VAR_2, field == var2
+            field = "value"
+            value = str(payload)
+        elif itemType == 26:
+            # VAR_3, field == var3
+            field = "value"
+            value = str(payload)
+        elif itemType == 27:
+            # VAR_4, field == var4
+            field = "value"
+            value = str(payload)
+        elif itemType == 28:
+            # VAR_5, field == var5
+            field = "value"
+            value = str(payload)
+        elif itemType == 29:
+            # UP, field == up
+            field = "value"
+            value = str(payload)
+        elif itemType == 30:
+            # DOWN, field == down
+            field = "value"
+            value = str(payload)
+        elif itemType == 31:
+            # STOP, field == stop
+            field = "value"
+            value = str(payload)
+        elif itemType == 32:
+            # IR_SEND, field == send
+            field = "value"
+            value = str(payload)
+        elif itemType == 33:
+            # IR_RECEIVE, field == receive
+            field = "value"
+            value = str(payload)
+        elif itemType == 34:
+            # FLOW, field == flow
+            field = "value"
+            value = str(payload)
+        elif itemType == 35:
+            # VOLUME, field == volume
+            field = "value"
+            value = str(payload)
+        elif itemType == 36:
+            # LOCK, field == lock
+            field = "value"
+            value = str(payload)
+        elif itemType == 37:
+            # DUST_LEVEL, field == dust
+            field = "value"
+            value = str(payload)
+        elif itemType == 38:
+            # VOLTAGE, field == voltage
+            field = "value"
+            value = str(payload)
+        elif itemType == 39:
+            # CURRENT, field == current
+            field = "value"
+            value = str(payload)
+        elif itemType == "batteryLevel":
+            # field == batteryLevel
+            field = itemType
+            value = int(payload)
+
+            uiValue = (u"%s%%" % payload)
+        elif itemType == "state":
+            # field == state
+            field = itemType
+            value = str(payload)
         else:
+            field = "value"
             value = str(payload)
 
         if indigoDevice:
@@ -1358,3 +1570,68 @@ class Plugin(indigo.PluginBase):
         self.pluginPrefs["nodeIds"] = self.nodeIds
 
         self.loadDevices()
+
+    def removeFailedDevices(self):
+        menuItems = []
+        changed = False
+
+        for address in self.devices:
+            try:
+                device = self.devices[address]
+
+                identifiers = self.getIdentifiers(address)
+
+                nodeId = identifiers[0]
+                childId = identifiers[1]
+
+                if not device["id"] and device["type"] == kNoneType:
+                    del self.devices[address]
+
+                    changed = True
+
+                    indigo.server.log(u"remove failed device %s" % address)
+            except Exception, (ErrorMessage):
+                self.errorLog(u"remove failed device %s failed: %s" % (address, ErrorMessage))
+
+                pass
+
+        if changed:
+            self.pluginPrefs["devices"] = self.devices
+
+            self.devices = self.pluginPrefs["devices"]
+        else:
+            indigo.server.log(u"no failed devices found")
+
+        return menuItems
+
+    def removeDevice(self, valuesDict, typeId):
+        targetId = int(valuesDict["targetDevice"])
+        changed = False
+
+        for address in self.devices:
+            try:
+                identifiers = self.getIdentifiers(address)
+
+                nodeId = identifiers[0]
+
+                if targetId == nodeId:
+                    del self.devices[address]
+
+                    changed = True
+
+                    indigo.server.log(u"remove device %s" % address)
+            except Exception, (ErrorMessage):
+                self.errorLog(u"remove device %s failed: %s" % (address, ErrorMessage))
+
+                pass
+
+        if changed:
+            self.pluginPrefs["devices"] = self.devices
+
+            self.devices = self.pluginPrefs["devices"]
+        else:
+            indigo.server.log(u"no device removed")
+
+        errorsDict = indigo.Dict()
+
+        return (True, valuesDict, errorsDict)
