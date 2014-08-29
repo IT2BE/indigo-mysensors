@@ -7,8 +7,8 @@ This plugin (and Readme) is a work in progress, based on MySensors 1.4b...
 Unless you don't mind that not all sensors have been tested and you don't mind using beta software you can use the plugin. If you decide to do so please report issues through Github.
 
 ### Installation instructions
-Download the plugin. It is a zipped archive named 'indigo-mysensors-master.zip'.
-Unzip the archive and rename the folder to 'MySensors.indigoPlugin'.
+1. Download the (zip archive of the) plugin [here](https://github.com/IT2BE/indigo-mysensors/releases)
+2. Follow the [plugin installation instructions](http://wiki.indigodomo.com/doku.php?id=indigo_6_documentation:getting_started#installing_plugins_and_configuring_plugin_settings_pro_only_feature)
 
 When you have Indigo installed the folder will show as a single file (a so called package).
 When you doubleclick on the file you will automatically open Indigo (or bring it to the front) and you will be asked if you want to install and enable it.
