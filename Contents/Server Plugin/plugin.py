@@ -26,6 +26,12 @@ kNoneType = -1
 kGatewayNodeId = 0
 kGatewayChildId = 0
 
+#RECEIVE
+#nodeId;childId;messageType;acqType;itemType;payload
+
+#SEND
+#nodeId;childId;messageType;acqType;itemType;value
+
 #MESSAGE message types (M_)
 kMessageTypes = {
     "PRESENTATION"          : 0,
@@ -37,33 +43,32 @@ kMessageTypes = {
 
 #PRESENTATION sensor types (S_)
 kSensorTypes = {
-    "DOOR" 			            : [0,  "Door Sensor"],
-    "MOTION" 		            : [1,  "Motion Sensor"],
-    "SMOKE" 		            : [2,  "Smoke Sensor"],
-    "LIGHT" 		            : [3,  "Relay Actuator"],
-    "DIMMER" 		            : [4,  "Dimmer Actuator"],
-    "COVER" 		            : [5,  "Window Sensor"],
-    "TEMP" 			            : [6,  "Temperature Sensor"],
-    "HUM" 			            : [7,  "Humidity Sensor"],
-    "BARO" 			            : [8,  "Barometer Sensor"],
-    "WIND" 			            : [9,  "Wind Sensor"],
-    "RAIN" 			            : [10, "Rain Sensor"],
-    "UV" 			            : [11, "UV Sensor"],
-    "WEIGHT" 		            : [12, "Weight Sensor"],
-    "POWER" 		            : [13, "Power Sensor"],
-    "HEATER" 		            : [14, "Heater Sensor"],
-    "DISTANCE" 		            : [15, "Distance Sensor"],
-    "LIGHT_LEVEL"	            : [16, "Luminance Sensor"],
-    "ARDUINO_NODE"	            : [17, "MySensors Node"],
-    "ARDUINO_RELAY"	            : [18, "MySensors Repeater"],
-    "LOCK" 			            : [19, "Lock Sensor"],
-    "IR" 			            : [20, "IR Sensor"],
-    "WATER" 		            : [21, "Water Sensor"],
-	"AIR_QUALITY"               : [22, "AirQuality Sensor"],
-    "CUSTOM"                    : [23, "Generic Sensor"],
-    "DUST"                      : [24, "Dust Sensor"],
-    "SCENE_CONTROLLER"          : [25, "Scene Controller"]
-
+    "DOOR" 			            : [0,  "Door Sensor",               "Door",                         "sensor",   "SupportsOnState"],
+    "MOTION" 		            : [1,  "Motion Sensor",             "Motion",                       "sensor",   "SupportsOnState"],
+    "SMOKE" 		            : [2,  "Smoke Sensor",              "Smoke",                        "sensor",   "SupportsOnState"],
+    "LIGHT" 		            : [3,  "Relay Actuator",            "Relay",                        "relay",    ""],
+    "DIMMER" 		            : [4,  "Dimmer Actuator",           "Dimmer",                       "dimmer",   ""],
+    "COVER" 		            : [5,  "Window Sensor",             "Window",                       "sensor",   "SupportsOnState"],
+    "TEMP" 			            : [6,  "Temperature Sensor",        "Temperature",                  "sensor",   "SupportsSensorValue"],
+    "HUM" 			            : [7,  "Humidity Sensor",           "Humidity",                     "sensor",   "SupportsSensorValue"],
+    "BARO" 			            : [8,  "Barometer Sensor",          "Barometer",                    "sensor",   "SupportsSensorValue"],
+    "WIND" 			            : [9,  "Wind Sensor",               "Wind",                         "sensor",   "SupportsSensorValue"],
+    "RAIN" 			            : [10, "Rain Sensor",               "Rain",                         "sensor",   "SupportsSensorValue"],
+    "UV" 			            : [11, "UV Sensor",                 "UV",                           "sensor",   "SupportsSensorValue"],
+    "WEIGHT" 		            : [12, "Weight Sensor",             "Weight",                       "sensor",   "SupportsSensorValue"],
+    "POWER" 		            : [13, "Power Sensor",              "Power",                        "sensor",   "SupportsSensorValue"],
+    "HEATER" 		            : [14, "Heater Sensor",             "Heater",                       "sensor",   "SupportsOnState"],
+    "DISTANCE" 		            : [15, "Distance Sensor",           "Distance",                     "sensor",   "SupportsSensorValue"],
+    "LIGHT_LEVEL"	            : [16, "Luminance Sensor",          "Luminance",                    "sensor",   "SupportsSensorValue"],
+    "ARDUINO_NODE"	            : [17, "MySensors Node",            "Node",                         "custom",   ""],
+    "ARDUINO_RELAY"	            : [18, "MySensors Repeater",        "Repeater",                     "custom",   ""],
+    "LOCK" 			            : [19, "Lock Sensor",               "Lock",                         "sensor",   "SupportsOnState"],
+    "IR" 			            : [20, "IR Sensor",                 "IR",                           "sensor",   "SupportsSensorValue"],
+    "WATER" 		            : [21, "Water Sensor",              "Water",                        "sensor",   "SupportsSensorValue"],
+	"AIR_QUALITY"               : [22, "AirQuality Sensor",         "AirQuality",                   "sensor",   "SupportsSensorValue"],
+    "CUSTOM"                    : [23, "Generic Sensor",            "Generic",                      "sensor",   "SupportsSensorValue"],
+    "DUST"                      : [24, "Dust Sensor",               "Dust",                         "sensor",   "SupportsSensorValue"],
+    "SCENE_CONTROLLER"          : [25, "Scene Controller",          "Scene",                        "sensor",   "SupportsSensorValue"]
 }
 
 #SET_VARIABLE, REQ_VARIABLE, ACK_VARIABLE sensor variables (V_)
@@ -84,7 +89,7 @@ kVariableTypes = {
     "DISTANCE"		            : [13, "distance",                  "distance update to"],
     "IMPEDANCE"		            : [14, "scale",                     "scale update to"],
     "ARMED"			            : [15, "security",                  "security update to"],
-    "TRIPPED"		            : [16, "onoroff",                   "state update to"],
+    "TRIPPED"		            : [16, "onoroff",                   "motion update to"],
     "WATT"			            : [17, "watt",                      "watt update to"],
     "KWH"			            : [18, "kwh",                       "kwh update to"],
     "SCENE_ON"		            : [19, "scene",                     "scene on state update to"],
@@ -119,8 +124,8 @@ kInternalTypes = {
  	"ID_RESPONSE"               : [4,  "ID response ",              ""],
  	"INCLUSION_MODE"            : [5,  "inclusion mode ",           "update to "],
   	"CONFIG"                    : [6,  "config ",                   "update to "],
-    "PING"			            : [7,  "ping ",                     ""],
-    "PING_ACK"		            : [8,  "Ping ACK ",                 ""],
+    "FIND_PARENT"			    : [7,  "find parent ",              ""],
+    "FIND_PARENT_RESPONSE"		: [8,  "find parent response ",     ""],
     "LOG_MESSAGE"	            : [9,  "Log message ",              ""],
     "CHILDREN"		            : [10, "Children ",                 "update to "],
     "SKETCH_NAME"	            : [11, "Sketch name ",              "update to "],
@@ -365,13 +370,55 @@ class Plugin(indigo.PluginBase):
 
             self.sendSetCommand(nodeId, childId, "LIGHT", value)
         except Exception, (ErrorMessage):
-			self.errorLog(u"dimmer action failed: %s" % ErrorMessage)
+            self.errorLog(u"dimmer action failed: %s" % ErrorMessage)
 
     ########################################
-    # actions
+    # Sensor Action callback
     ########################################
-    def send(self, pluginAction):
-        self.debugLog(u"Send method called")
+    def actionControlSensor(self, pluginAction, indigoDevice):
+        try:
+            properties = indigoDevice.pluginProps
+
+            address = properties["address"]
+
+            identifiers = self.getIdentifiers(address)
+
+            nodeId = identifiers[0]
+            childId = identifiers[1]
+
+            if pluginAction.sensorAction == indigo.kSensorAction.TurnOn:
+                onOffState = True
+            elif pluginAction.sensorAction == indigo.kSensorAction.TurnOff:
+                onOffState = False
+            elif pluginAction.sensorAction == indigo.kSensorAction.Toggle:
+                onOffState = not indigoDevice.onState
+
+            self.updateState(indigoDevice, properties["type"], onOffState)
+
+            if onOffState:
+                value = 1
+            else:
+                value = 0
+
+            self.sendSetCommand(nodeId, childId, self.getVariableKey(properties["type"]), value)
+        except Exception, (ErrorMessage):
+            self.errorLog(u"dimmer action failed: %s" % ErrorMessage)
+
+    ########################################
+	# General Action callback
+    ########################################
+    def actionControlGeneral(self, pluginAction, indigoDevice):
+        if pluginAction.deviceAction == indigo.kDeviceGeneralAction.Beep:
+            indigo.server.log(u"sent \"%s\" %s" % (indigoDevice.name, "beep request"))
+
+        elif pluginAction.deviceAction == indigo.kDeviceGeneralAction.RequestStatus:
+            indigo.server.log(u"sent \"%s\" %s" % (indigoDevice.name, "status request"))
+
+    ########################################
+	# Custom Plugin Action callbacks (defined in Actions.xml)
+	########################################
+    def customAction(self, pluginAction, indigoDevice):
+        pass
 
     ########################################
     # events
@@ -455,16 +502,17 @@ class Plugin(indigo.PluginBase):
         indigoDevice = None
 
         name = self.getSensorName(itemType)
+        shortName = self.getSensorName(itemType);
 
         try:
             if device and device["id"]:
                 indigoDevice = indigo.devices[device["id"]]
 
             if device:
-                self.updateDevice(device, address, { "type" : itemType, "model" : name, "version" : payload })
+                self.updateDevice(device, address, { "type" : itemType, "model" : shortName, "version" : payload })
 
             if indigoDevice:
-                self.updateProperties(indigoDevice, { "type" : itemType, "model" : name, "version" : payload })
+                self.updateProperties(indigoDevice, { "type" : itemType, "model" : shortName, "version" : payload })
 
                 indigo.server.log(u"received '%s' %s version update to %s" % (indigoDevice.name, name, payload))
             else:
@@ -603,12 +651,12 @@ class Plugin(indigo.PluginBase):
                         self.inclusionMode = False
             elif itemType == self.getInternalNumber("CONFIG"):
                 # 6
-                self.sendInternalCommand(nodeId, childId, itemType, self.unit)
+                #self.sendInternalCommand(nodeId, childId, itemType, self.unit)
                 pass
-            elif itemType == self.getInternalNumber("PING"):
+            elif itemType == self.getInternalNumber("FIND_PARENT"):
                 # 7 Ignore
                 pass
-            elif itemType == self.getInternalNumber("PING_ACK"):
+            elif itemType == self.getInternalNumber("FIND_PARENT_RESPONSE"):
                 # 8 Ignore
                 pass
             elif itemType == self.getInternalNumber("LOG_MESSAGE"):
@@ -694,16 +742,18 @@ class Plugin(indigo.PluginBase):
     def sendRequestResponse(self, nodeId, childId, itemType, value):
         field = self.getVariableField(itemType)
         type = self.getVariableNumber(itemType)
+        text = self.getVariableText(itemType)
 
-        uiValue = self.uiValue(field, type, value)
+        uiValue = "%s %s %s" % (field, text, value)
 
         self.sendCommand(nodeId, childId, "SET", 0, type, value, uiValue)
 
     def sendInternalCommand(self, nodeId, childId, itemType, value):
         name = self.getInternalName(itemType)
         type = self.getInternalNumber(itemType)
+        text = self.getInternalText(itemType)
 
-        uiValue = self.uiValue(name, type, value)
+        uiValue = "%s %s%s" % (name, text, value)
 
         self.sendCommand(nodeId, childId, "INTERNAL", 0, type, value, uiValue)
 
@@ -732,7 +782,7 @@ class Plugin(indigo.PluginBase):
                 else:
                     indigo.server.log(u"sent '%s:%s' %s " % (nodeId, childId, uiValue))
 
-                    return True
+                return True
             else:
                raise Exception("Can't write to serial port")
         except Exception, (ErrorMessage):
@@ -803,7 +853,7 @@ class Plugin(indigo.PluginBase):
 
         device["version"] = ""
         device["id"] = ""
-        device["model"] = self.getSensorName(device["type"])
+        device["model"] = self.getSensorShortName(device["type"])
         device["modelVersion"] = ""
 
         self.devices[address] = device
@@ -857,206 +907,231 @@ class Plugin(indigo.PluginBase):
         text = self.getVariableText(itemType)
         field = self.getVariableField(itemType)
 
-        value = None
-        uiValue = None
-
         if itemType == 0:
             # TEMP, field == temperature
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.1f °C" % value) if self.unit == "M" else (u"%.1f °F" % value)
         elif itemType == 1:
             # HUM, field == humidity
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.0f%%" % value)
         elif itemType == 2:
             # LIGHT, field == onOffState
+            field == "onOffState"
             value = self.booleanValue(payload)
+            uiValue = u"on" if value else u"off"
         elif itemType == 3:
             # DIMMER, field == dimmer
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 4:
             # PRESSURE, field == pressure
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.1f Pa" % value)
         elif itemType == 5:
             # FORECAST, field == forecast
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 6:
             # RAIN, field == rain
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.1f mm" % value) if self.unit == "M" else (u"%.1f inch" % value)
         elif itemType == 7:
             # RAINRATE, field == rain
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.1f mm" % value) if self.unit == "M" else (u"%.1f inch" % value)
         elif itemType == 8:
             # WIND, field == speed
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.1f mps" % value) if self.unit == "M" else (u"%.1f fps" % value)
         elif itemType == 9:
             # GUST, field == gust
+            field = "gust"
             value = float(payload)
-
             uiValue = (u"%.1f mps" % value) if self.unit == "M" else (u"%.1f fps" % value)
         elif itemType == 10:
             # DIRECTION, field == direction
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 11:
             # UV, field == uv
+            field = "sensorValue"
             value = float(payload)
-
-            uiValue = u"%.1f" % value
+            uiValue = (u"%.1f" % value)
         elif itemType == 12:
             # WEIGHT, field == scale
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 13:
             # DISTANCE, field == distance
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.1f cm" % value) if self.unit == "M" else (u"%.1f inch" % value)
         elif itemType == 14:
             # IMPEDANCE, field == scale
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 15:
             # ARMED, field == security
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 16:
             # TRIPPED, field == onoroff
+            field == "onOffState"
             value = self.booleanValue(payload)
-
             uiValue = u"on" if value else u"off"
         elif itemType == 17:
             # WATT, field == watt
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s W" % payload)
         elif itemType == 18:
             # KWH, field == kwh
-            field = "value"
-            value = str(payload)
+            field = "kwh"
+            value = int(payload)
+            uiValue = (u"%s kWH" % payload)
         elif itemType == 19:
             # SCENE_ON, field == scene
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 20:
             # SCENE_OFF, field == scene
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 21:
             # HEATER, field == user
-            field = "value"
-            value = str(payload)
+            field = "user"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 22:
             # HEATER_SW, field == onoroff
+            field == "onOffState"
             value = self.booleanValue(payload)
-
             uiValue = u"on" if value else u"off"
         elif itemType == 23:
             # LIGHT_LEVEL, field == lux
+            field = "sensorValue"
             value = float(payload)
-
             uiValue = (u"%.0f lux" % value)
         elif itemType == 24:
             # VAR_1, field == var1
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 25:
             # VAR_2, field == var2
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 26:
             # VAR_3, field == var3
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 27:
             # VAR_4, field == var4
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 28:
             # VAR_5, field == var5
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 29:
             # UP, field == up
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 30:
             # DOWN, field == down
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 31:
             # STOP, field == stop
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 32:
             # IR_SEND, field == send
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 33:
             # IR_RECEIVE, field == receive
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 34:
             # FLOW, field == flow
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 35:
             # VOLUME, field == volume
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 36:
             # LOCK, field == lock
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 37:
             # DUST_LEVEL, field == dust
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         elif itemType == 38:
             # VOLTAGE, field == voltage
             field = "value"
-            value = str(payload)
+            value = int(payload)
+            uiValue = (u"%s V" % payload)
         elif itemType == 39:
             # CURRENT, field == current
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s A" % payload)
         elif itemType == "batteryLevel":
             # field == batteryLevel
             field = itemType
             value = int(payload)
-
             uiValue = (u"%s%%" % payload)
         elif itemType == "state":
             # field == state
             field = itemType
-            value = str(payload)
+            value = int(payload)
+            uiValue = (u"%s" % payload)
         else:
-            field = "value"
-            value = str(payload)
+            field = "sensorValue"
+            value = int(payload)
+            uiValue = (u"%s" % payload)
 
-        if indigoDevice:
-            if itemType == "batteryLevel" or value != indigoDevice.states[field]:
-                if uiValue:
-                    indigoDevice.updateStateOnServer(field, value = value, uiValue = uiValue)
+        if itemType == "batteryLevel" or itemType == "state":
+            indigoDevice.updateStateOnServer(field, value = value, uiValue = uiValue)
+        elif (itemType == 2 or itemType == 3) and value != indigoDevice.states[field]:
+            indigoDevice.updateStateOnServer(field, value = value)
+        elif field == "onOffState" and value != indigoDevice.onState:
+            indigoDevice.updateStateOnServer(field, value = value)
+        elif field == "sensorValue" and value != indigoDevice.sensorValue:
+            indigoDevice.updateStateOnServer(field, value = value, uiValue = uiValue)
 
-                    return u"%s %s" % (text, uiValue)
-                else:
-                    indigoDevice.updateStateOnServer(field, value = value)
-
-                    return u"%s %s" % (text, value)
-
-        return None
+        return u"%s %s" % (text, uiValue)
 
     def updateProperties(self, indigoDevice, properties):
         if not indigoDevice:
@@ -1124,13 +1199,14 @@ class Plugin(indigo.PluginBase):
                 if selectedNodeId == nodeId and (address != boardAddress or device["type"] == self.getSensorNumber("ARDUINO_RELAY")):
                     deviceName = self.getSensorName(device["type"])
                     deviceType = self.getSensorKey(device["type"])
+                    deviceSupport = self.getSensorSupport(device["type"])
 
                     indigoDevice = indigo.device.create(indigo.kProtocol.Plugin, deviceTypeId = deviceType)
 
                     if board["model"]:
                         boardModel = board["model"]
                     else:
-                        boardModel = self.getSensorName(board["type"])
+                        boardModel = self.getSensorShortName(board["type"])
 
                     if board["modelVersion"]:
                         indigoDevice.model = ("%s (SK%s)" % (boardModel, board["modelVersion"]))
@@ -1164,6 +1240,20 @@ class Plugin(indigo.PluginBase):
                         properties["model"] = indigoDevice.model
                     else:
                         properties["model"] = ""
+
+                    if deviceSupport == "SupportsOnState":
+                        properties["SupportsOnState"] = "true"
+                    else:
+                        properties["SupportsOnState"] = "false"
+
+                    if deviceSupport == "SupportsSensorValue":
+                        properties["SupportsSensorValue"] = "true"
+                    else:
+                        properties["SupportsSensorValue"] = "false"
+
+                    properties["SupportsStatusRequest"] = "true"
+                    properties["AllowOnStateChange"] = "false"
+                    properties["AllowSensorValueChange"] = "false"
 
                     self.updateProperties(indigoDevice, properties)
             except Exception, (ErrorMessage):
@@ -1265,6 +1355,16 @@ class Plugin(indigo.PluginBase):
 
         return ""
 
+    def getSensorShortName(self, itemType):
+        if isinstance(itemType, int):
+            for key in kSensorTypes:
+                if kSensorTypes[key][0] == itemType:
+                    return kSensorTypes[key][2]
+        elif itemType in kSensorTypes:
+            return kSensorTypes[itemType][2]
+
+        return ""
+
     def getSensorKey(self, itemType):
         if isinstance(itemType, int):
             for key in kSensorTypes:
@@ -1274,6 +1374,26 @@ class Plugin(indigo.PluginBase):
             return itemType
 
         return None
+
+    def getSensorType(self, itemType):
+        if isinstance(itemType, int):
+            for key in kSensorTypes:
+                if kSensorTypes[key][0] == itemType:
+                    return kSensorTypes[key][3]
+        elif itemType in kSensorTypes:
+            return kSensorTypes[itemType][3]
+
+        return ""
+
+    def getSensorSupport(self, itemType):
+        if isinstance(itemType, int):
+            for key in kSensorTypes:
+                if kSensorTypes[key][0] == itemType:
+                    return kSensorTypes[key][4]
+        elif itemType in kSensorTypes:
+            return kSensorTypes[itemType][4]
+
+        return ""
 
     def getVariableNumber(self, itemType):
         if isinstance(itemType, int):

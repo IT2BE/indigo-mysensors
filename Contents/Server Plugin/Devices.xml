@@ -20,14 +20,14 @@
 			</Field>
 		</ConfigUI>
 	</DeviceFactory>
-	<Device type="custom" id="DOOR">
+	<Device type="sensor" id="DOOR">
 		<Name>Door</Name>
 		<Description>The Door Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -35,26 +35,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="onoroff" defaultValue="False">
-		        <ValueType>Boolean</ValueType>
-		        <TriggerLabel>On/Off State</TriggerLabel>
-		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
-		        <ControlPageLabel>On/Off State</ControlPageLabel>
-		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="MOTION">
+	<Device type="sensor" id="MOTION">
 		<Name>Motion</Name>
 		<Description>The Motion Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -62,26 +68,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="onoroff" defaultValue="False">
-		        <ValueType>Boolean</ValueType>
-		        <TriggerLabel>On/Off State</TriggerLabel>
-		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
-		        <ControlPageLabel>On/Off State</ControlPageLabel>
-		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="SMOKE">
+	<Device type="sensor" id="SMOKE">
 		<Name>Smoke</Name>
 		<Description>The Smoke Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -89,17 +101,23 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="onoroff" defaultValue="False">
-		        <ValueType>Boolean</ValueType>
-		        <TriggerLabel>On/Off State</TriggerLabel>
-		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
-		        <ControlPageLabel>On/Off State</ControlPageLabel>
-		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
 	<Device type="relay" id="LIGHT">
 		<Name>Relay</Name>
@@ -108,7 +126,7 @@
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -125,7 +143,7 @@
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -135,14 +153,14 @@
 		    </Field>
 		</ConfigUI>
 	</Device>
-	<Device type="custom" id="COVER">
+	<Device type="sensor" id="COVER">
 		<Name>Window</Name>
 		<Description>The Window Covering Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -150,26 +168,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="onoroff" defaultValue="False">
-		        <ValueType>Boolean</ValueType>
-		        <TriggerLabel>On/Off State</TriggerLabel>
-		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
-		        <ControlPageLabel>On/Off State</ControlPageLabel>
-		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="TEMP">
+	<Device type="sensor" id="TEMP">
 		<Name>Temperature</Name>
 		<Description>The Temperature Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -177,26 +201,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="temperature" defaultValue="0">
-		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>temperature</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="HUM">
+	<Device type="sensor" id="HUM">
 		<Name>Humidity</Name>
 		<Description>The Humidity Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -204,26 +234,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="humidity" defaultValue="0">
-		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>humidity</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="BARO">
+	<Device type="sensor" id="BARO">
 		<Name>Barometer</Name>
 		<Description>The Barometer Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -231,26 +267,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="pressure" defaultValue="0">
-		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>barometer</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="WIND">
+	<Device type="sensor" id="WIND">
 		<Name>Wind</Name>
 		<Description>The Wind Speed Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -258,33 +300,41 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
         <States>
-			<State id="speed" defaultValue="0">
-		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
 			<State id="gust" defaultValue="0">
 		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		        <TriggerLabel>Gust</TriggerLabel>
+		        <TriggerLabelPrefix>Gust is</TriggerLabelPrefix>
+		        <ControlPageLabel>Gust</ControlPageLabel>
+		        <ControlPageLabelPrefix>Gust is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>speed</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="RAIN">
+	<Device type="sensor" id="RAIN">
 		<Name>Rain</Name>
 		<Description>The Rain Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -292,26 +342,41 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
         <States>
-			<State id="rain" defaultValue="0">
+			<State id="rainrate" defaultValue="0">
 		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		        <TriggerLabel>Rain rate</TriggerLabel>
+		        <TriggerLabelPrefix>Rain rate is</TriggerLabelPrefix>
+		        <ControlPageLabel>Rain rate</ControlPageLabel>
+		        <ControlPageLabelPrefix>Rain rate is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
-	    <UiDisplayStateId>rain</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="UV">
+	<Device type="sensor" id="UV">
 		<Name>Ultra Violet</Name>
 		<Description>The UV Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -319,26 +384,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="uv" defaultValue="0">
-		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>uv</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="WEIGHT">
+	<Device type="sensor" id="WEIGHT">
 		<Name>Weight</Name>
 		<Description>The Weight (Scale) Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -346,26 +417,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="value" defaultValue="0">
-		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="POWER">
+	<Device type="sensor" id="POWER">
 		<Name>Power Meter</Name>
 		<Description>The Power Meter.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -373,26 +450,42 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="kwh" defaultValue="0">
 		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		        <TriggerLabel>Usage</TriggerLabel>
+		        <TriggerLabelPrefix>Usage is</TriggerLabelPrefix>
+		        <ControlPageLabel>Usage</ControlPageLabel>
+		        <ControlPageLabelPrefix>Usage is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
 	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="HEATER">
+	<Device type="sensor" id="HEATER">
 		<Name>Heater</Name>
 		<Description>The Heater Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -400,26 +493,42 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
         <States>
-			<State id="value" defaultValue="0">
+			<State id="user" defaultValue="0">
 		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
+		        <TriggerLabel>User</TriggerLabel>
+		        <TriggerLabelPrefix>User is</TriggerLabelPrefix>
+		        <ControlPageLabel>User</ControlPageLabel>
+		        <ControlPageLabelPrefix>User is</ControlPageLabelPrefix>
 		    </State>
 	    </States>
 	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="DISTANCE">
+	<Device type="sensor" id="DISTANCE">
 		<Name>Distance</Name>
 		<Description>The Distance Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -427,26 +536,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="distance" defaultValue="0">
-		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>distance</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="LIGHT_LEVEL">
+	<Device type="sensor" id="LIGHT_LEVEL">
 		<Name>Luminance</Name>
 		<Description>The Luminance Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -454,17 +569,23 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="lux" defaultValue="0">
-		        <ValueType>Number</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>lux</UiDisplayStateId>
 	</Device>
 	<Device type="custom" id="ARDUINO_NODE">
 		<Name>Node</Name>
@@ -473,7 +594,7 @@
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -500,7 +621,7 @@
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -520,14 +641,14 @@
 	    </States>
     	<UiDisplayStateId>state</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="LOCK">
+	<Device type="sensor" id="LOCK">
 		<Name>Lock</Name>
 		<Description>The Door Lock Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -535,26 +656,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="onoroff" defaultValue="False">
-		        <ValueType>Boolean</ValueType>
-		        <TriggerLabel>On/Off State</TriggerLabel>
-		        <TriggerLabelPrefix>On/Off State is</TriggerLabelPrefix>
-		        <ControlPageLabel>On/Off State</ControlPageLabel>
-		        <ControlPageLabelPrefix>On/Off State is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>onoroff</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="IR">
+	<Device type="sensor" id="IR">
 		<Name>Infrared</Name>
 		<Description>The IR Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -562,26 +689,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="value" defaultValue="0">
-		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="WATER">
+	<Device type="sensor" id="WATER">
 		<Name>Water</Name>
 		<Description>The Water Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -589,26 +722,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="value" defaultValue="0">
-		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="AIR_QUALITY">
+	<Device type="sensor" id="AIR_QUALITY">
 		<Name>Air Quality</Name>
 		<Description>The Air Quality Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -616,26 +755,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="value" defaultValue="0">
-		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="CUSTOM">
+	<Device type="sensor" id="genericsensor">
 		<Name>Generic</Name>
 		<Description>A Generic Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -643,26 +788,32 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="value" defaultValue="0">
-		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
-	<Device type="custom" id="DUST">
+	<Device type="sensor" id="DUST">
 		<Name>Dust</Name>
 		<Description>A Dust Sensor.</Description>
 		<RemoteDisplay>true</RemoteDisplay>
 		<ConfigUI>
 			<Field id="address" type="textfield" readonly="true">
 		        <Label>Address:</Label>
-                <Description>Formatted as Radio ID : Child ID</Description>
+                <Description>Formatted as 'Radio ID:Child ID'</Description>
 		    </Field>
 			<Field id="model" type="textfield" readonly="true">
 		        <Label>Model:</Label>
@@ -670,16 +821,22 @@
 			<Field id="version" type="textfield" readonly="true">
 		        <Label>Library:</Label>>
 		    </Field>
+			<Field id="SupportsOnState" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Show ON/OFF state:</Label>
+			</Field>
+			<Field id="SupportsSensorValue" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Show sensor value state:</Label>
+			</Field>
+			<Field id="SupportsStatusRequest" type="checkbox" hidden="true" defaultValue="true">
+				<Label>Enable status request/refresh button:</Label>
+			</Field>
+			<Field id="AllowOnStateChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override on/off state:</Label>
+			</Field>
+			<!-- Not yet implemented by Indigo. -->
+			<Field id="AllowSensorValueChange" type="checkbox" hidden="true" defaultValue="false">
+				<Label>Enable controls to override sensor value state:</Label>
+			</Field>
 		</ConfigUI>
-        <States>
-			<State id="value" defaultValue="0">
-		        <ValueType>String</ValueType>
-		        <TriggerLabel>Sensor Value</TriggerLabel>
-		        <TriggerLabelPrefix>Sensor Value is</TriggerLabelPrefix>
-		        <ControlPageLabel>Sensor Value</ControlPageLabel>
-		        <ControlPageLabelPrefix>Sensor Value is</ControlPageLabelPrefix>
-		    </State>
-	    </States>
-	    <UiDisplayStateId>value</UiDisplayStateId>
 	</Device>
 </Devices>
