@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Copyright (C)2014-2014 Marcel Trapman. -->
+<!-- Copyright (C)2014-2015 Marcel Trapman. -->
 <PluginConfig>
 	<Field id="toplabel" type="label">
 		<Label>With this plugin you can communicate with sensors and actuators based on MySensors.</Label>
@@ -16,7 +16,7 @@
 		</List>
 	</Field>
 	<Field id="copyrightlabel" type="label" fontSize="small" fontColor="darkgray">
-		<Label>Copyright ©2014-2014 Marcel Trapman.</Label>
+		<Label>Copyright ©2014-2015 Marcel Trapman.</Label>
 	</Field>
 	<Field id="debugSeparator" type="separator"/>
 	<Field id="debugLabel" type="label" fontSize="small" fontColor="darkgray">

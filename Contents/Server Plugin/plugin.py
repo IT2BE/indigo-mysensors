@@ -4,7 +4,7 @@
 ####################
 # MySensors plugin interface for Indigo 6
 #
-# Copyright (c)2014-2014 Marcel Trapman.
+# Copyright (c)2014-2015 Marcel Trapman.
 ####################
 import httplib, urllib, sys, os, threading, glob, time
 
@@ -475,16 +475,22 @@ class Plugin(indigo.PluginBase):
             payload = ";".join(arguments[5:])
 
             if payload.startswith("read:") or payload.startswith("send:"):
+                #indigo.server.log(u"READ:WRITE")
                 pass
             elif messageType == self.getMessageNumber("PRESENTATION"):
+                #indigo.server.log(u"PRESENTATION")
                 self.processPresentationCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("SET"):
+                #indigo.server.log(u"SET")
                 self.processSetCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("REQUEST"):
+                #indigo.server.log(u"REQUEST")
                 self.processRequestCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("INTERNAL"):
+                #indigo.server.log(u"INTERNAL")
                 self.processInternalCommand(nodeId, childId, acqType, itemType, payload)
             elif messageType == self.getMessageNumber("STREAM"):
+                #indigo.server.log(u"STREAM")
                 self.processStreamCommand(nodeId, childId, acqType, itemType, payload)
             else:
                 raise Exception("Unrecognized messageType %s" % messageType)
@@ -862,6 +868,8 @@ class Plugin(indigo.PluginBase):
 
         self.updateNodeIds(nodeId, False)
 
+        self.debugLog(u"now available device[%s] %s %s" % (address, device["type"], device["model"]))
+
     def updateDevice(self, device, address, properties):
         if not device:
             return
@@ -906,221 +914,266 @@ class Plugin(indigo.PluginBase):
 
         text = self.getVariableText(itemType)
         field = self.getVariableField(itemType)
+        uiValue = None
+        uiImage = None
 
         if itemType == 0:
             # TEMP, field == temperature
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.1f °C" % value) if self.unit == "M" else (u"%.1f °F" % value)
+            uiImage = indigo.kStateImageSel.TemperatureSensor
         elif itemType == 1:
             # HUM, field == humidity
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.0f%%" % value)
+            uiImage = indigo.kStateImageSel.HumiditySensor
         elif itemType == 2:
             # LIGHT, field == onOffState
-            field == "onOffState"
+            field = "onOffState"
             value = self.booleanValue(payload)
-            uiValue = u"on" if value else u"off"
+            uiValue = u"on" if value == True else u"off"
+            uiImage = None
         elif itemType == 3:
             # DIMMER, field == dimmer
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 4:
             # PRESSURE, field == pressure
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.1f Pa" % value)
+            uiImage = None
         elif itemType == 5:
             # FORECAST, field == forecast
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 6:
             # RAIN, field == rain
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.1f mm" % value) if self.unit == "M" else (u"%.1f inch" % value)
+            uiImage = None
         elif itemType == 7:
             # RAINRATE, field == rain
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.1f mm" % value) if self.unit == "M" else (u"%.1f inch" % value)
+            uiImage = None
         elif itemType == 8:
             # WIND, field == speed
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.1f mps" % value) if self.unit == "M" else (u"%.1f fps" % value)
+            uiImage = indigo.kStateImageSel.WindSpeedSensor
         elif itemType == 9:
             # GUST, field == gust
             field = "gust"
             value = float(payload)
             uiValue = (u"%.1f mps" % value) if self.unit == "M" else (u"%.1f fps" % value)
+            uiImage = None
         elif itemType == 10:
             # DIRECTION, field == direction
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = indigo.kStateImageSel.WindDirectionSensor
         elif itemType == 11:
             # UV, field == uv
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.1f" % value)
+            uiImage = None
         elif itemType == 12:
             # WEIGHT, field == scale
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 13:
             # DISTANCE, field == distance
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.1f cm" % value) if self.unit == "M" else (u"%.1f inch" % value)
+            uiImage = None
         elif itemType == 14:
             # IMPEDANCE, field == scale
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 15:
             # ARMED, field == security
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 16:
             # TRIPPED, field == onoroff
-            field == "onOffState"
+            field = "onOffState"
             value = self.booleanValue(payload)
-            uiValue = u"on" if value else u"off"
+            uiValue = u"on" if value == True else u"off"
+            uiImage = None
         elif itemType == 17:
             # WATT, field == watt
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s W" % payload)
+            uiImage = None
         elif itemType == 18:
             # KWH, field == kwh
             field = "kwh"
             value = int(payload)
             uiValue = (u"%s kWH" % payload)
+            uiImage = None
         elif itemType == 19:
             # SCENE_ON, field == scene
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = indigo.kStateImageSel.PowerOn
         elif itemType == 20:
             # SCENE_OFF, field == scene
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = indigo.kStateImageSel.PowerOff
         elif itemType == 21:
             # HEATER, field == user
             field = "user"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 22:
             # HEATER_SW, field == onoroff
-            field == "onOffState"
+            field = "onOffState"
             value = self.booleanValue(payload)
-            uiValue = u"on" if value else u"off"
+            uiValue = u"on" if value == True else u"off"
+            uiImage = None
         elif itemType == 23:
             # LIGHT_LEVEL, field == lux
             field = "sensorValue"
             value = float(payload)
             uiValue = (u"%.0f lux" % value)
+            uiImage = indigo.kStateImageSel.LightSensor
         elif itemType == 24:
             # VAR_1, field == var1
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 25:
             # VAR_2, field == var2
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 26:
             # VAR_3, field == var3
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 27:
             # VAR_4, field == var4
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 28:
             # VAR_5, field == var5
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 29:
             # UP, field == up
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 30:
             # DOWN, field == down
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 31:
             # STOP, field == stop
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 32:
             # IR_SEND, field == send
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 33:
             # IR_RECEIVE, field == receive
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 34:
             # FLOW, field == flow
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 35:
             # VOLUME, field == volume
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 36:
             # LOCK, field == lock
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 37:
             # DUST_LEVEL, field == dust
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         elif itemType == 38:
             # VOLTAGE, field == voltage
             field = "value"
             value = int(payload)
             uiValue = (u"%s V" % payload)
+            uiImage = None
         elif itemType == 39:
             # CURRENT, field == current
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s A" % payload)
+            uiImage = None
         elif itemType == "batteryLevel":
             # field == batteryLevel
             field = itemType
             value = int(payload)
             uiValue = (u"%s%%" % payload)
+            uiImage = None
         elif itemType == "state":
             # field == state
             field = itemType
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
         else:
             field = "sensorValue"
             value = int(payload)
             uiValue = (u"%s" % payload)
+            uiImage = None
 
         if itemType == "batteryLevel" or itemType == "state":
             indigoDevice.updateStateOnServer(field, value = value, uiValue = uiValue)
@@ -1130,6 +1183,13 @@ class Plugin(indigo.PluginBase):
             indigoDevice.updateStateOnServer(field, value = value)
         elif field == "sensorValue" and value != indigoDevice.sensorValue:
             indigoDevice.updateStateOnServer(field, value = value, uiValue = uiValue)
+
+        try:
+            if uiImage is not None:
+                indigoDevice.updateStateImageOnServer(uiImage)
+
+        except Exception, (ErrorMessage):
+                self.errorLog(u"setting image failed: %s" % ErrorMessage)
 
         return u"%s %s" % (text, uiValue)
 
@@ -1290,7 +1350,7 @@ class Plugin(indigo.PluginBase):
                             self.gatewayVersion = device["version"]
 
                             self.sendInternalCommand(nodeId, childId, "VERSION", "Get Version")
-                        elif device["type"] == kNoneType:
+                        elif device["type"] == kNoneType or childId == kGatewayChildId:
                             self.sendInternalCommand(nodeId, childId, "VERSION", "Get Version")
                             self.sendInternalCommand(nodeId, childId, "SKETCH_NAME", "Get Sketch Name")
                  except Exception, (ErrorMessage):
@@ -1525,25 +1585,28 @@ class Plugin(indigo.PluginBase):
         return ""
 
     def setupNodeIds(self):
-        for index in range(0, kMaxNodeId):
-            id = "N%s" % index
+        try:
+            for index in range(0, kMaxNodeId):
+                id = "N%s" % index
 
-            self.nodeIds[id] = True
+                self.nodeIds[id] = True
 
-        self.updateNodeIds(0, False)
+            self.updateNodeIds(0, False)
+        except Exception, (ErrorMessage):
+            raise LookupError("setup node ids %s", ErrorMessage)
 
     def booleanValue(self, value):
         try:
             if isinstance(value, int) or isinstance(value, float):
-                return value > 0
+                return (value > 0)
             elif isinstance(value, str):
-                return value.lower() in [ "yes", "true", "t", "1" ]
+                return (value.lower() in [ "yes", "true", "t", "1" ])
             elif type(value) is bool:
                 return value
         except Exception, (ErrorMessage):
             pass
 
-        return None
+        return False
 
     def numberValue(self, value):
         try:
@@ -1690,6 +1753,26 @@ class Plugin(indigo.PluginBase):
         self.pluginPrefs["nodeIds"] = self.nodeIds
 
         self.loadDevices()
+
+    def resetDevices(self):
+        indigo.server.log(u"Reset devices")
+
+        for address in self.devices:
+            try:
+                device = self.devices[address]
+
+                if device["id"]:
+                    deviceId = device["id"]
+
+                    indigo.device.delete(deviceId)
+
+                    indigo.server.log(u"remove device %s" % address)
+            except Exception, (ErrorMessage):
+                self.errorLog(u"remove device %s failed: %s" % (address, ErrorMessage))
+
+                pass
+
+        self.reloadDevices()
 
     def removeFailedDevices(self):
         menuItems = []

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Copyright (C)2014-2014 Marcel Trapman. -->
+<!-- Copyright (C)2014-2015 Marcel Trapman. -->
 <MenuItems>
 	<MenuItem id="debuggingMenu">
 		<Name>Toggle Debugging</Name>
@@ -33,5 +33,12 @@
                 <Label>You can only permanently remove a device when the device is not configured</Label>
             </Field>
         </ConfigUI>
+	</MenuItem>
+    <MenuItem id="separatorMenu2">
+	    <Field id="removeSeparator2" type="separator"/>
+	</MenuItem>
+    <MenuItem id="resetMenu">
+		<Name>Reset MySensors</Name>
+        <CallbackMethod>resetDevices</CallbackMethod>
 	</MenuItem>
 </MenuItems>

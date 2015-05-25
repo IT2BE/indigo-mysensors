@@ -2,7 +2,9 @@ Indigo MySensors plugin
 =======================
 The Indigo MySensors plugin adds interaction with [MySensors](http://www.mysensors.org) to [Indigo](http://www.perceptiveautomation.com).
 
-This plugin (and Readme) is a work in progress, based on MySensors 1.4b...
+This plugin (and Readme) is a work in progress.
+
+You have to use MySensors 1.4b and Indigo 6.1.0.
 
 Unless you don't mind that not all sensors have been tested and you don't mind using beta software you can use the plugin. If you decide to do so please report issues through Github.
 
